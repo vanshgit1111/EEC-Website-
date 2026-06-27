@@ -1,0 +1,13 @@
+{
+  "name": "Élan Exports Consultancy",
+  "short_name": "Élan Exports",
+  "description": "Buyer-first sourcing consultancy for India & Asia. Singapore-registered, est. 2005.",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#012D76",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/"
+}

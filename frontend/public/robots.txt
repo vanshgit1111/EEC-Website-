@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /buyer
+Disallow: /supplier
+Disallow: /api/
+
+Sitemap: https://elan-exports-v2.preview.emergentagent.com/sitemap.xml

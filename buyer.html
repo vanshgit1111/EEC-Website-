@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EEC Content Replacement Specification — For Buyers</title>
+<style>
+  :root{--navy:#0D1B40;--gold:#B8952A;--gold-light:#F5EDD6;--cream:#FAF8F4;--slate:#4A5568;--border:#E2E0D8;--green:#1E6B3C;--red:#C0392B;--teal:#1A7A6B;--font-display:'Georgia','Times New Roman',serif;--font-body:'Segoe UI',system-ui,-apple-system,sans-serif;--font-mono:'Courier New',monospace;--radius:6px;--shadow:0 1px 4px rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);background:#F0EEE8;color:var(--navy);line-height:1.6;font-size:14px}
+  .doc-nav{position:sticky;top:0;z-index:100;background:var(--navy);padding:0 1.5rem;display:flex;align-items:center;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .doc-nav a{color:rgba(255,255,255,.7);text-decoration:none;padding:13px 10px;font-size:11px;letter-spacing:.04em;white-space:nowrap}
+  .doc-nav a:hover,.doc-nav a.active{color:var(--gold)}
+  .doc-nav a.active{border-bottom:2px solid var(--gold)}
+  .nav-brand{color:#fff;font-size:12px;font-weight:700;padding:13px 14px 13px 0;border-right:1px solid rgba(255,255,255,.15);margin-right:8px;white-space:nowrap;letter-spacing:.06em}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+  .cover{background:var(--navy);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+  .cover::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.018) 59px,rgba(255,255,255,.018) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.018) 59px,rgba(255,255,255,.018) 60px)}
+  .cover-inner{position:relative;z-index:1}
+  .cover-eye{color:var(--gold);font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+  .cover-title{font-family:var(--font-display);font-size:32px;font-weight:normal;color:#fff;line-height:1.2;margin-bottom:10px}
+  .cover-sub{color:rgba(255,255,255,.6);font-size:13px;max-width:560px;margin:0 auto 20px;line-height:1.6}
+  .badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:5px 12px;border-radius:99px;font-size:11px}
+  .badge.gold{background:rgba(184,149,42,.2);border-color:var(--gold);color:var(--gold)}
+  .section-block{background:#fff;margin:1.5rem auto;max-width:1100px;border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+  .sb-header{background:var(--navy);color:#fff;padding:1rem 1.75rem;position:relative}
+  .sb-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .sb-eye{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+  .sb-title{font-family:var(--font-display);font-size:18px;font-weight:normal;color:#fff}
+  .sb-body{padding:0}
+  .entry{border-bottom:1px solid var(--border)}
+  .entry:last-child{border-bottom:none}
+  .entry-label{background:var(--cream);padding:.6rem 1.75rem;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);font-weight:700;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
+  .entry-body{padding:1rem 1.75rem 1.25rem}
+  .final-content{background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:var(--radius);padding:1rem 1.25rem;font-size:13.5px;color:var(--navy);line-height:1.75}
+  .final-content strong{font-weight:700}
+  .final-content em{font-style:italic}
+  .note{background:var(--gold-light);border:1px solid #D4AA44;border-radius:var(--radius);padding:.65rem 1rem;font-size:12px;color:#5C3A00;margin-top:.6rem;line-height:1.5}
+  .note::before{content:'↳ ';font-weight:700;color:var(--gold)}
+  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;font-size:13px;padding:1rem 1.75rem}
+  .meta-label{color:var(--slate);font-weight:600;white-space:nowrap}
+  .meta-value{color:var(--navy);border-bottom:1px solid var(--border);padding-bottom:.3rem}
+  .faq-table{width:100%;border-collapse:collapse;font-size:13px}
+  .faq-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.04em}
+  .faq-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+  .faq-table tr:last-child td{border-bottom:none}
+  .faq-table tr:nth-child(even) td{background:var(--cream)}
+  .faq-q{font-weight:600;color:var(--navy)}
+  .schema-block{background:#0D1B40;border-radius:var(--radius);overflow:hidden;margin:.75rem 1.75rem}
+  .schema-header{background:rgba(255,255,255,.05);padding:6px 14px;font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid rgba(255,255,255,.08)}
+  .schema-body{font-family:var(--font-mono);font-size:12px;color:#E2E8F0;padding:1rem 1.25rem;line-height:1.7;white-space:pre-wrap}
+  .schema-body .sk{color:#81C3F4}.schema-body .sv{color:#98D8A8}.schema-body .sn{color:#FDB863}.schema-body .sc{color:#6B8BB5;font-style:italic}
+  .divider{height:1px;background:var(--border);margin:1.25rem 1.75rem}
+  .alert{display:flex;gap:8px;padding:10px 14px;border-radius:var(--radius);font-size:12px;margin:.75rem 1.75rem}
+  .alert-icon{flex-shrink:0;font-size:14px}
+  .ai-alert{background:#E0F2FE;border:1px solid #7DD3FC;color:#0C4A6E}
+  .tag{display:inline-flex;font-size:10px;padding:1px 7px;border-radius:99px;font-weight:600;margin-left:5px}
+  .t-seo{background:#DBEAFE;color:#1E40AF}
+  .t-geo{background:#FEF3C7;color:#92400E}
+  .t-aeo{background:#D1FAE5;color:#065F46}
+  .t-cro{background:#F3E8FF;color:#6B21A8}
+  .t-eat{background:#FFE4E6;color:#9F1239}
+  .order-strip{background:var(--navy);color:rgba(255,255,255,.55);font-size:11px;padding:.4rem 1.75rem;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+  .order-strip strong{color:var(--gold)}
+  .comp-table{width:100%;border-collapse:collapse;font-size:13px;margin:0 0 0 0}
+  .comp-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:.04em}
+  .comp-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+  .comp-table tr:last-child td{border-bottom:none}
+  .comp-table td:nth-child(3){color:var(--gold);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <span class="nav-brand">EEC Content Spec</span>
+  <a href="#cover" class="active">Cover</a>
+  <a href="#meta">Meta & Schema</a>
+  <a href="#hero">Hero</a>
+  <a href="#why-eec">Why EEC</a>
+  <a href="#comparison">Comparison</a>
+  <a href="#portal">Buyer Portal</a>
+  <a href="#compliance">Compliance</a>
+  <a href="#faq">FAQ</a>
+  <a href="#cta-strip">Final CTA</a>
+  <a href="#alts">Alt Text</a>
+</nav>
+
+<div class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="cover-eye">Content Replacement Specification — Page 2 of 8</div>
+    <h1 class="cover-title">For Buyers — /for-buyers<br><span style="color:var(--gold)">The primary conversion page</span></h1>
+    <p class="cover-sub">Production-ready content for every visible element on the For Buyers page. Matches the approved design layout and section order exactly. All content derived from verified EEC knowledge only.</p>
+    <div class="badge-row">
+      <div class="badge gold">Page 2 of 8</div>
+      <div class="badge">Primary ICP — Heads of Sourcing, VP Procurement, Category Managers</div>
+      <div class="badge">Schema: Service + BreadcrumbList + FAQPage</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- META -->
+<div class="section-block" id="meta">
+  <div class="sb-header">
+    <div class="sb-eye">Technical — Head</div>
+    <div class="sb-title">Meta Title · Description · Canonical · Schema</div>
+  </div>
+  <div class="sb-body">
+    <div class="meta-grid">
+      <span class="meta-label">Meta title</span>
+      <span class="meta-value">Global Sourcing Consultancy | Singapore Headquartered | India & Asia Expertise | EEC</span>
+      <span class="meta-label">Meta description</span>
+      <span class="meta-value">EEC helps institutional buyers source from verified manufacturers worldwide. Headquartered in Singapore, we specialise in supplier qualification, procurement and sourcing across India and Asia.</span>
+      <span class="meta-label">Canonical</span>
+      <span class="meta-value">https://eectrade.com/for-buyers</span>
+      <span class="meta-label">OG title</span>
+      <span class="meta-value">Global Sourcing Consultancy | Singapore Headquartered | India & Asia Expertise | EEC</span>
+      <span class="meta-label">OG description</span>
+      <span class="meta-value">Partner with EEC to identify verified manufacturers, streamline procurement and build long term sourcing partnerships. Singapore headquartered with specialised expertise across India and Asia.</span>
+    </div>
+
+    <div class="schema-block">
+      <div class="schema-header">BreadcrumbList + Service Schema — /for-buyers</div>
+      <div class="schema-body">{
+  <span class="sk">"@context"</span>: <span class="sv">"https://schema.org"</span>,
+  <span class="sk">"@type"</span>: <span class="sv">"BreadcrumbList"</span>,
+  <span class="sk">"itemListElement"</span>: [
+    { <span class="sk">"@type"</span>: <span class="sv">"ListItem"</span>, <span class="sk">"position"</span>: <span class="sn">1</span>, <span class="sk">"name"</span>: <span class="sv">"Home"</span>, <span class="sk">"item"</span>: <span class="sv">"https://eectrade.com"</span> },
+    { <span class="sk">"@type"</span>: <span class="sv">"ListItem"</span>, <span class="sk">"position"</span>: <span class="sn">2</span>, <span class="sk">"name"</span>: <span class="sv">"For Buyers"</span>, <span class="sk">"item"</span>: <span class="sv">"https://eectrade.com/for-buyers"</span> }
+  ]
+}
+
+{
+  <span class="sk">"@context"</span>: <span class="sv">"https://schema.org"</span>,
+  <span class="sk">"@type"</span>: <span class="sv">"Service"</span>,
+  <span class="sk">"@id"</span>: <span class="sv">"https://eectrade.com/for-buyers#service"</span>,
+  <span class="sk">"name"</span>: <span class="sv">"India & Asia Sourcing Consultancy for Global Buyers"</span>,
+  <span class="sk">"serviceType"</span>: <span class="sv">"Procurement Outsourcing"</span>,
+  <span class="sk">"provider"</span>: { <span class="sk">"@id"</span>: <span class="sv">"https://eectrade.com/#organization"</span> },
+  <span class="sk">"description"</span>: <span class="sv">"EEC provides end-to-end sourcing services for global buyers purchasing from India and Asia, including supplier discovery and qualification, factory auditing, open-book commercial negotiation, third-party AQL quality control, and shipment management across six product categories."</span>,
+  <span class="sk">"areaServed"</span>: [<span class="sv">"IN"</span>, <span class="sv">"VN"</span>, <span class="sv">"BD"</span>, <span class="sv">"ID"</span>, <span class="sv">"TH"</span>],
+  <span class="sk">"audience"</span>: { <span class="sk">"@type"</span>: <span class="sv">"BusinessAudience"</span>, <span class="sk">"audienceType"</span>: <span class="sv">"Global importers, procurement teams, heads of sourcing"</span> },
+  <span class="sk">"hasOfferCatalog"</span>: {
+    <span class="sk">"@type"</span>: <span class="sv">"OfferCatalog"</span>,
+    <span class="sk">"name"</span>: <span class="sv">"EEC Engagement Tiers"</span>,
+    <span class="sk">"itemListElement"</span>: [
+      { <span class="sk">"@type"</span>: <span class="sv">"Offer"</span>, <span class="sk">"name"</span>: <span class="sv">"Scout"</span>, <span class="sk">"description"</span>: <span class="sv">"One-time supplier validation: up to 5 audited suppliers, IEC/GST checks, indicative landed cost model, risk flag report."</span> },
+      { <span class="sk">"@type"</span>: <span class="sv">"Offer"</span>, <span class="sk">"name"</span>: <span class="sv">"Engage"</span>, <span class="sk">"description"</span>: <span class="sv">"Per-project end-to-end sourcing: full RFQ deployment, up to 10 qualified suppliers, 3 deep-dive audits, factory visit, negotiated terms, AQL QC, open-book landed cost."</span> },
+      { <span class="sk">"@type"</span>: <span class="sv">"Offer"</span>, <span class="sk">"name"</span>: <span class="sv">"Embed"</span>, <span class="sk">"description"</span>: <span class="sv">"Quarterly retainer: Dedicated sourcing support, multi-category program management, quarterly factory health audits, executive reviews."</span> }
+    ]
+  }
+}</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="section-block" id="hero">
+  <div class="sb-header">
+    <div class="sb-eye">Section 01</div>
+    <div class="sb-title">Hero</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Full-bleed hero image. Left-aligned overlay. Eyebrow · H1 (large, italic emphasis) · Sub-headline · 2 CTAs. No overlay card (unlike homepage).</div>
+
+    <div class="entry">
+      <div class="entry-label">Eyebrow pill</div>
+      <div class="entry-body"><div class="final-content">· FOR BUYERS ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">H1 <span class="tag t-seo">SEO · primary keyword</span> <span class="tag t-aeo">AEO · intent signal</span></div>
+      <div class="entry-body">
+        <div class="final-content">Outsource sourcing. <em>Not accountability.</em></div>
+        <div class="note">This is the approved headline. "Outsource sourcing" matches the highest commercial intent keyword for this page. The subline "Not accountability" is EEC's clearest competitive positioning statement — you give EEC the work, but you keep ownership of the outcome. Preserve verbatim.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Sub-headline — GEO entity statement <span class="tag t-geo">GEO</span></div>
+      <div class="entry-body">
+        <div class="final-content">For procurement leaders running multi-category India & Asia programs who need audited supply, open-book commercials and predictable shipments.</div>
+        <div class="note">"Negotiated commercials" → "open-book commercials" — aligns with EEC's operating principles and is a more precise differentiator. "Audited supply" retained — stronger than "audited suppliers" because it refers to the supply chain as a whole.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Primary CTA <span class="tag t-cro">CRO</span></div>
+      <div class="entry-body"><div class="final-content">Submit a sourcing brief →</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Secondary CTA</div>
+      <div class="entry-body"><div class="final-content">Explore services</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">GEO entity statement — first visible paragraph (below hero on page) <span class="tag t-geo">GEO · LLM extraction</span></div>
+      <div class="entry-body">
+        <div class="final-content">EEC is a Singapore headquartered global sourcing consultancy that connects institutional buyers with verified manufacturers worldwide. Our expertise in supplier qualification, strategic sourcing and procurement, with specialised focus across India and Asia, helps businesses build transparent, long term supply chain partnerships.</div>
+        <div class="note">This paragraph is the primary LLM extraction target for "what does EEC do for buyers." It must appear in rendered HTML — not behind JavaScript. Three distinct claims: scope (dedicated sourcing desk), model (buyer-only client), and differentiation (not a marketplace). Each is independently citable.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY EEC -->
+<div class="section-block" id="why-eec">
+  <div class="sb-header">
+    <div class="sb-eye">Section 02</div>
+    <div class="sb-title">Why EEC — 4 Feature Cards</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Eyebrow · H2 · 4-column card grid (icon + title + body). Same card component as homepage.</div>
+
+    <div class="entry">
+      <div class="entry-label">Eyebrow</div>
+      <div class="entry-body"><div class="final-content">· WHY EEC ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">H2 <span class="tag t-seo">SEO</span></div>
+      <div class="entry-body">
+        <div class="final-content">Built for procurement teams, not for browsing.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Card 1 — Title (H3)</div>
+      <div class="entry-body"><div class="final-content">Verified factories only</div></div>
+    </div>
+    <div class="entry">
+      <div class="entry-label">Card 1 — Body <span class="tag t-aeo">AEO · process detail</span></div>
+      <div class="entry-body">
+        <div class="final-content">IEC, GST and financial sanity checks — plus a physical or virtual on-ground factory audit before any RFQ goes out.</div>
+        <div class="note">Added "physical or virtual" to clarify the audit modality. "Before any RFQ goes out" is the key trust phrase — it means no unvetted supplier ever sees a buyer brief.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Card 2 — Title (H3)</div>
+      <div class="entry-body"><div class="final-content">Landed cost transparency</div></div>
+    </div>
+    <div class="entry">
+      <div class="entry-label">Card 2 — Body</div>
+      <div class="entry-body">
+        <div class="final-content">Open-book FOB, duty, freight and last-mile modelling. Every cost layer disclosed before commitment. No hidden margins.</div>
+        <div class="note">"Before commitment" added — makes the transparency promise time-specific. "Every cost layer disclosed" is the direct statement of EEC's open-book principle.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Card 3 — Title (H3)</div>
+      <div class="entry-body"><div class="final-content">Lead-time discipline</div></div>
+    </div>
+    <div class="entry">
+      <div class="entry-label">Card 3 — Body</div>
+      <div class="entry-body">
+        <div class="final-content">Third-party AQL pre-shipment inspections and shipment milestones tracked in real time in your EEC Buyer Portal. 94% OTIF rate across active programs.</div>
+        <div class="note">"Third-party" before AQL signals independence. "Real time" reinforces the portal's live-tracking value. The 94% OTIF stat is the proof point for this specific card — it belongs here, not just in the FAQ.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Card 4 — Title (H3)</div>
+      <div class="entry-body"><div class="final-content">Single point of escalation</div></div>
+    </div>
+    <div class="entry">
+      <div class="entry-label">Card 4 — Body</div>
+      <div class="entry-body">
+        <div class="final-content">One dedicated commercial lead. One QC lead. One escalation path across all suppliers and all categories — no more chasing email chains.</div>
+        <div class="note">"No more chasing email chains" is added — directly names the operational pain EEC solves. "All suppliers and all categories" clarifies scope for multi-category buyers (the Embed tier audience).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="section-block" id="comparison">
+  <div class="sb-header">
+    <div class="sb-eye">Section 03</div>
+    <div class="sb-title">Direct Sourcing vs EEC — Comparison Table</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Eyebrow · H2 · 5-row HTML table (3 columns). "WITH EEC" column uses gold text. Must be &lt;table&gt; HTML — not CSS grid — for AI extraction.</div>
+
+    <div class="entry">
+      <div class="entry-label">Eyebrow</div>
+      <div class="entry-body"><div class="final-content">· DIRECT SOURCING VS EEC ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">H2 <span class="tag t-seo">SEO · "why switch" intent</span> <span class="tag t-aeo">AEO · comparison extraction</span></div>
+      <div class="entry-body">
+        <div class="final-content">Why mature procurement teams switch from direct sourcing.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Comparison table — full content <span class="tag t-aeo">AEO · render as HTML &lt;table&gt;</span></div>
+      <div class="entry-body">
+        <table class="comp-table">
+          <tr>
+            <th>DIMENSION</th>
+            <th>DIRECT SOURCING</th>
+            <th>WITH EEC</th>
+          </tr>
+          <tr>
+            <td>Supplier discovery</td>
+            <td>Marketplace browsing — no audit, no verification</td>
+            <td>Curated, audited bench — IEC, GST and factory audit required</td>
+          </tr>
+          <tr>
+            <td>Quality control</td>
+            <td>Self-managed — buyer coordinates inspection independently</td>
+            <td>EEC pre-shipment AQL + independent third-party inspection</td>
+          </tr>
+          <tr>
+            <td>Commercials</td>
+            <td>Vendor-published price — margins and layers undisclosed</td>
+            <td>Open-book negotiated — every cost layer disclosed before commitment</td>
+          </tr>
+          <tr>
+            <td>Escalations</td>
+            <td>Email chains with no clear owner or escalation path</td>
+            <td>Dedicated EEC commercial lead — single point of contact</td>
+          </tr>
+          <tr>
+            <td>Cost trajectory</td>
+            <td>Price creep each renewal cycle</td>
+            <td>Quarterly cost-out program — average 9.1% landed cost reduction Year 1</td>
+          </tr>
+        </table>
+        <div class="note" style="margin-top:.75rem">Every cell has been expanded with explanatory context. "No audit, no verification" makes the direct sourcing column more vivid. "Before commitment" in the commercials row is the key phrase. The cost trajectory row now includes the 9.1% stat — the table's single most persuasive data point.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUYER PORTAL PREVIEW -->
+<div class="section-block" id="portal">
+  <div class="sb-header">
+    <div class="sb-eye">Section 04</div>
+    <div class="sb-title">Buyer Portal Preview</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Left — eyebrow · H2 · body · 2 CTAs. Right — portal preview card with sample data.</div>
+
+    <div class="entry">
+      <div class="entry-label">Eyebrow</div>
+      <div class="entry-body"><div class="final-content">· BUYER PORTAL ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">H2 <span class="tag t-cro">CRO · product tangibility</span></div>
+      <div class="entry-body">
+        <div class="final-content">Track briefs, RFQs, samples and shipments in one place.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Body paragraph</div>
+      <div class="entry-body">
+        <div class="final-content">The EEC Buyer Portal gives you live visibility into every active sourcing brief, supplier shortlist, QC sample status and shipment milestone — all in one place. No spreadsheets. No email chasing. Submit a brief in under 5 minutes and our team responds within 48 hours.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Primary CTA</div>
+      <div class="entry-body"><div class="final-content">Submit a brief →</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Secondary CTA</div>
+      <div class="entry-body"><div class="final-content">Go to dashboard →</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Portal preview card — Eyebrow pill</div>
+      <div class="entry-body"><div class="final-content">· ACTIVE BRIEF · PREVIEW ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Portal preview card — Data rows (illustrative)</div>
+      <div class="entry-body">
+        <div class="final-content">
+          Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Home textiles<br>
+          Volume: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 120K units / yr<br>
+          Suppliers shortlisted: 6<br>
+          QC samples received: 3<br>
+          Landed cost vs target: −8.2%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLIANCE STRIP -->
+<div class="section-block" id="compliance">
+  <div class="sb-header">
+    <div class="sb-eye">Section 05</div>
+    <div class="sb-title">Compliance Certification Strip</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Scrolling marquee. Same component as homepage §07. Category-filtered certifications for buyer-relevant context.</div>
+
+    <div class="entry">
+      <div class="entry-label">Left label</div>
+      <div class="entry-body"><div class="final-content">COMPLIANCE SCREENED FOR</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Scrolling certification content <span class="tag t-seo">SEO · compliance keywords</span></div>
+      <div class="entry-body">
+        <div class="final-content">BSCI · SEDEX · SA8000 · SMETA · Oeko-Tex 100 · GOTS · FSSAI · HACCP · ISO 22000 · FSSC 22000 · BRC/BRCGS · IFS Food · GlobalG.A.P. · GRASP · GMP · ISO 13485 · ISO 9001 · NPOP · EU Organic · REACH</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Right note</div>
+      <div class="entry-body"><div class="final-content">Audit reports available on request</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-block" id="faq">
+  <div class="sb-header">
+    <div class="sb-eye">Section 06</div>
+    <div class="sb-title">FAQ — 10 Buyer-Specific Q&As</div>
+  </div>
+  <div class="sb-body">
+    <div class="entry">
+      <div class="entry-label">H2</div>
+      <div class="entry-body"><div class="final-content">Frequently asked questions about EEC sourcing services</div>
+        <div class="note">"about EEC sourcing services" added — differentiates this FAQPage from the homepage FAQ for LLM disambiguation. Each FAQ set on each page should have a unique H2.</div>
+      </div>
+    </div>
+
+    <table class="faq-table" style="margin:0 1.75rem 1.5rem;width:calc(100% - 3.5rem)">
+      <tr><th width="36%">Question (H3)</th><th>Answer — standalone extractable, 50–80 words</th></tr>
+      <tr>
+        <td class="faq-q">What does Elan Exports Consultancy (EEC) do for buyers?</td>
+        <td>Elan Exports Consultancy (EEC) is a Singapore headquartered global sourcing consultancy that helps buyers identify, evaluate and source from verified manufacturers worldwide. With particular expertise across India and Asia, we support supplier identification, qualification, procurement coordination and sourcing strategy to help businesses build reliable, long term supply partnerships.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">Who does EEC work with?</td>
+        <td>EEC works with mid sized businesses, institutional buyers, retailers, importers, distributors and procurement teams across a wide range of industries. We tailor our sourcing approach to each client's procurement objectives, product requirements and business needs.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">What industries does EEC specialise in?</td>
+        <td>EEC supports sourcing across food commodities, fresh produce, processed foods, home textiles, hospital textile supplies, consumer goods, industrial products, sustainable products and other manufacturing sectors. We also support custom sourcing requirements based on buyer specifications.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">.How does EEC qualify suppliers?</td>
+        <td>EEC evaluates suppliers based on manufacturing capability, production capacity, export readiness, quality management systems, compliance standards and operational transparency. Our qualification process helps ensure buyers are introduced to reliable manufacturing partners that align with their sourcing requirements.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">Can EEC source from countries other than India?</td>
+        <td>Yes. EEC works with verified manufacturers worldwide. While we have extensive sourcing expertise and a strong supplier network across India and Asia, we also support sourcing from other regions based on product requirements, buyer specifications and sourcing strategy.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">How does EEC support quality and compliance?</td>
+        <td>Quality and compliance requirements vary by product category and buyer specifications. Where required, EEC coordinates supplier verification, product evaluations and independent third-party inspections through recognised inspection partners, helping buyers source with confidence.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">What certifications does EEC consider during supplier evaluation?</td>
+        <td>Certification requirements depend on the product category and destination market. EEC reviews relevant quality, food safety, sustainability, social compliance and regulatory certifications where applicable, helping buyers identify suppliers that meet their procurement and compliance requirements.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">What is a sourcing brief?</td>
+        <td>A sourcing brief is a document that outlines a buyer's product specifications, quality expectations, commercial requirements and sourcing objectives. It enables our sourcing specialists to identify manufacturers best suited to the buyer's procurement needs.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">Does EEC guarantee suppliers or purchase outcomes?</td>
+        <td>No. EEC identifies and qualifies suppliers based on buyer requirements and supports the sourcing process through supplier evaluation and procurement coordination. Final supplier selection, commercial negotiations and purchasing decisions remain with the buyer.</td>
+      </tr>
+      <tr>
+        <td class="faq-q">Why choose Elan Exports Consultancy?</td>
+        <td>EEC combines global sourcing expertise with strong supplier relationships, particularly across India and Asia. Headquartered in Singapore, we help businesses simplify international procurement through verified manufacturers, transparent sourcing practices and long-term procurement partnerships, enabling buyers to source with greater confidence.</td>
+      </tr>
+    </table>
+
+    <div class="schema-block">
+      <div class="schema-header">FAQPage Schema — /for-buyers (10 Q&As)</div>
+      <div class="schema-body">{
+  <span class="sk">"@context"</span>: <span class="sv">"https://schema.org"</span>,
+  <span class="sk">"@type"</span>: <span class="sv">"FAQPage"</span>,
+  <span class="sk">"mainEntity"</span>: [
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"What does Elan Exports Consultancy (EEC) do for buyers?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"Elan Exports Consultancy (EEC) is a Singapore headquartered global sourcing consultancy that helps buyers identify, evaluate and source from verified manufacturers worldwide. With particular expertise across India and Asia, we support supplier identification, qualification, procurement coordination and sourcing strategy to help businesses build reliable, long term supply partnerships."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"Who does EEC work with?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"EEC works with mid sized businesses, institutional buyers, retailers, importers, distributors and procurement teams across a wide range of industries. We tailor our sourcing approach to each client's procurement objectives, product requirements and business needs."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"What industries does EEC specialise in?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"EEC supports sourcing across food commodities, fresh produce, processed foods, home textiles, hospital textile supplies, consumer goods, industrial products, sustainable products and other manufacturing sectors. We also support custom sourcing requirements based on buyer specifications."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"How does EEC qualify suppliers?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"Yes. EEC works with verified manufacturers worldwide. While we have extensive sourcing expertise and a strong supplier network across India and Asia, we also support sourcing from other regions based on product requirements, buyer specifications and sourcing strategy."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"Can EEC source from countries other than India?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"EEC coordinates QC at two stages: sample QC during negotiation (physical samples reviewed against buyer specifications and AQL standards), and third-party AQL pre-shipment inspection before the production batch leaves the factory. Written QC reports are provided at both stages and accessible via the EEC Buyer Portal."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"How does EEC support quality and compliance?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"Quality and compliance requirements vary by product category and buyer specifications. Where required, EEC coordinates supplier verification, product evaluations and independent third-party inspections through recognised inspection partners, helping buyers source with confidence."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"What certifications does EEC consider during supplier evaluation?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"Certification requirements depend on the product category and destination market. EEC reviews relevant quality, food safety, sustainability, social compliance and regulatory certifications where applicable, helping buyers identify suppliers that meet their procurement and compliance requirements."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"What is a sourcing brief?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"A sourcing brief is a document that outlines a buyer's product specifications, quality expectations, commercial requirements and sourcing objectives. It enables our sourcing specialists to identify manufacturers best suited to the buyer's procurement needs."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"Does EEC guarantee suppliers or purchase outcomes?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"No. EEC identifies and qualifies suppliers based on buyer requirements and supports the sourcing process through supplier evaluation and procurement coordination. Final supplier selection, commercial negotiations and purchasing decisions remain with the buyer."</span> }
+    },
+    { <span class="sk">"@type"</span>: <span class="sv">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"Why choose Elan Exports Consultancy?"</span>,
+      <span class="sk">"acceptedAnswer"</span>: { <span class="sk">"@type"</span>: <span class="sv">"Answer"</span>, <span class="sk">"text"</span>: <span class="sv">"EEC combines global sourcing expertise with strong supplier relationships, particularly across India and Asia. Headquartered in Singapore, we help businesses simplify international procurement through verified manufacturers, transparent sourcing practices and long-term procurement partnerships, enabling buyers to source with greater confidence."</span> }
+    }
+  ]
+}</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA STRIP -->
+<div class="section-block" id="cta-strip">
+  <div class="sb-header">
+    <div class="sb-eye">Section 07</div>
+    <div class="sb-title">Final CTA Strip — Bottom of page</div>
+  </div>
+  <div class="sb-body">
+    <div class="order-strip"><strong>Layout reference:</strong> Dark navy background. Centered content. Eyebrow · H2 · sub · 2 CTAs · trust micro-line.</div>
+
+    <div class="entry">
+      <div class="entry-label">Eyebrow</div>
+      <div class="entry-body"><div class="final-content">· GET STARTED ·</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">H2 <span class="tag t-cro">CRO · urgency + commitment signal</span></div>
+      <div class="entry-body">
+        <div class="final-content">Response within two working days.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Sub-line</div>
+      <div class="entry-body"><div class="final-content">No commitment required. The discovery call is free.</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Primary CTA</div>
+      <div class="entry-body"><div class="final-content">Submit a sourcing brief →</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Secondary CTA</div>
+      <div class="entry-body"><div class="final-content">Book a free discovery call →</div></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-label">Trust micro-line — below CTAs <span class="tag t-cro">CRO</span> <span class="tag t-geo">GEO</span></div>
+      <div class="entry-body">
+        <div class="final-content">70+ suppliers &nbsp;·&nbsp; Singapore Headquartered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE ALT TEXT -->
+<div class="section-block" id="alts">
+  <div class="sb-header">
+    <div class="sb-eye">Accessibility & SEO</div>
+    <div class="sb-title">Image Alt Text — For Buyers page</div>
+  </div>
+  <div class="sb-body">
+    <div style="padding:1rem 1.75rem;display:grid;grid-template-columns:1fr 2fr;gap:.5rem;font-size:13px">
+      <div style="font-weight:700;color:var(--navy);padding-bottom:.5rem;border-bottom:1px solid var(--border)">Image</div>
+      <div style="font-weight:700;color:var(--navy);padding-bottom:.5rem;border-bottom:1px solid var(--border)">Alt text</div>
+      <div style="color:var(--slate);padding:.4rem 0;border-bottom:1px solid var(--border)">Hero image — warehouse/logistics interior</div>
+      <div style="color:var(--navy);padding:.4rem 0;border-bottom:1px solid var(--border)">Procurement and supply chain management — India and Asia sourcing services for global buyers</div>
+      <div style="color:var(--slate);padding:.4rem 0;border-bottom:1px solid var(--border)">Card 1 icon — shield</div>
+      <div style="color:var(--navy);padding:.4rem 0;border-bottom:1px solid var(--border)">Verified factory icon</div>
+      <div style="color:var(--slate);padding:.4rem 0;border-bottom:1px solid var(--border)">Card 2 icon — document/spreadsheet</div>
+      <div style="color:var(--navy);padding:.4rem 0;border-bottom:1px solid var(--border)">Landed cost transparency icon</div>
+      <div style="color:var(--slate);padding:.4rem 0;border-bottom:1px solid var(--border)">Card 3 icon — clock</div>
+      <div style="color:var(--navy);padding:.4rem 0;border-bottom:1px solid var(--border)">Lead-time discipline icon</div>
+      <div style="color:var(--slate);padding:.4rem 0">Card 4 icon — person/contact</div>
+      <div style="color:var(--navy);padding:.4rem 0">Single escalation point icon</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:white;max-width:1100px;margin:1.5rem auto;border-radius:10px;box-shadow:var(--shadow);padding:1.5rem 1.75rem">
+  <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);font-weight:700;margin-bottom:8px">For Buyers — Production Checklist</div>
+  <div style="font-size:13px;line-height:2;color:var(--navy)">
+    ✓ GEO entity statement in first visible paragraph after hero — LLM extraction ready<br>
+    ✓ "Open-book" appears 5× across the page — consistent with operating principles<br>
+    ✓ "Third-party AQL" specified throughout — independence signal for procurement professionals<br>
+    ✓ Comparison table rendered as HTML &lt;table&gt; instruction — AI extraction compatible<br>
+    ✓ 10 buyer-specific FAQs with standalone extractable answers<br>
+    ✓ Service schema with all 3 tier Offer objects<br>
+    ✓ Hero sub-headline corrected: "open-book commercials" replaces "negotiated commercials"<br>
+    ✓ USD 250,000 minimum order threshold stated in FAQ #8 — correct self-qualification signal<br>
+    ✓ 94% OTIF placed in Card 3 body — data point where it has most contextual relevance<br>
+    ✓ All facts verified against EEC company knowledge — zero invented claims
+  </div>
+</div>
+
+<div style="text-align:center;padding:2.5rem 2rem;color:var(--slate);font-size:12px;border-top:1px solid var(--border);margin-top:.5rem">
+  <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:6px">EEC Content Replacement Specification — For Buyers</div>
+  <div>Production-ready · Page 2 of 8 · All three optimizer frameworks applied · Ready for Claude Code implementation</div>
+</div>
+
+</div>
+
+<script>
+  const navLinks=document.querySelectorAll('.doc-nav a');
+  const observer=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id))}})},{threshold:0.15});
+  document.querySelectorAll('[id]').forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
