@@ -4,12 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 import Seo from "@/components/Seo";
 import { useAuth } from "@/context/AuthContext";
 
-const HERO_BG = "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80";
+const HERO_BG = "https://images.unsplash.com/photo-1509592149230-c5d6b7d6c8b0?auto=format&fit=crop&w=1800&q=80";
 
 const WHY = [
   {
     title: "Verified factories only",
-    body: "IEC, GST and financial sanity checks — plus a physical or virtual on-ground factory audit before any RFQ goes out.",
+    body: "IEC + GST + financial sanity checks, plus on-ground audit before any RFQ goes out.",
   },
   {
     title: "Landed cost transparency",
@@ -64,7 +64,7 @@ const TIER_CARDS = [
 const FAQ = [
   ["What does Elan Exports Consultancy (EEC) do for buyers?", "Elan Exports Consultancy (EEC) is a Singapore headquartered global sourcing consultancy that helps buyers identify, evaluate and source from verified manufacturers worldwide. With particular expertise across India and Asia, we support supplier identification, qualification, procurement coordination and sourcing strategy to help businesses build reliable, long term supply partnerships."],
   ["Who does EEC work with?", "EEC works with mid sized businesses, institutional buyers, retailers, importers, distributors and procurement teams across a wide range of industries. We tailor our sourcing approach to each client's procurement objectives, product requirements and business needs."],
-  ["What industries does EEC specialise in?", "EEC supports sourcing across Food Commodities, Processed & Packaged Foods, Fresh & Agricultural Products, Healthcare & Hospital Supplies, Home Textile, Apparel & Hospitality Products, and Eco-Friendly, Sustainable & Organic Products. We also support custom sourcing requirements based on buyer specifications."],
+  ["What industries does EEC specialise in?", "EEC supports sourcing across food commodities, fresh produce, processed foods, home textiles, hospital textile supplies, consumer goods, industrial products, sustainable products and other manufacturing sectors. We also support custom sourcing requirements based on buyer specifications."],
   ["How does EEC qualify suppliers?", "EEC evaluates suppliers based on manufacturing capability, production capacity, export readiness, quality management systems, compliance standards and operational transparency. Our qualification process helps ensure buyers are introduced to reliable manufacturing partners that align with their sourcing requirements."],
   ["Can EEC source from countries other than India?", "Yes. EEC works with verified manufacturers worldwide. While we have extensive sourcing expertise and a strong supplier network across India and Asia, we also support sourcing from other regions based on product requirements, buyer specifications and sourcing strategy."],
   ["How does EEC support quality and compliance?", "Quality and compliance requirements vary by product category and buyer specifications. Where required, EEC coordinates supplier verification, product evaluations and independent third-party inspections through recognised inspection partners, helping buyers source with confidence."],
@@ -96,31 +96,12 @@ export default function ForBuyers() {
               { "@type": "ListItem", position: 2, name: "For Buyers", item: "https://eectrade.com/for-buyers" },
             ],
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "@id": "https://eectrade.com/for-buyers#service",
-            name: "India & Asia Sourcing Consultancy for Global Buyers",
-            serviceType: "Procurement Outsourcing",
-            provider: { "@id": "https://eectrade.com/#organization" },
-            description: "EEC provides end-to-end sourcing services for global buyers purchasing from India and Asia, including supplier discovery and qualification, factory auditing, open-book commercial negotiation, third-party AQL quality control, and shipment management across six product categories.",
-            areaServed: ["IN", "VN", "BD", "ID", "TH"],
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: FAQ.map(([question, answer]) => ({
-              "@type": "Question",
-              name: question,
-              acceptedAnswer: { "@type": "Answer", text: answer },
-            })),
-          },
         ]}
       />
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${HERO_BG})` }} aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-[#FFFFFF]/20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/85 to-[#FFFFFF]/20" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 lg:py-36">
           <div className="overline mb-4">For Buyers</div>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl">
@@ -138,28 +119,14 @@ export default function ForBuyers() {
         </div>
       </section>
 
-      <section className="py-14 border-b hairline bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <p className="text-[#3A4759] leading-relaxed max-w-4xl">
-            EEC is a Singapore headquartered global sourcing consultancy that connects institutional buyers with verified manufacturers worldwide. Our expertise in supplier qualification, strategic sourcing and procurement, with specialised focus across India and Asia, helps businesses build transparent, long term supply chain partnerships.
-          </p>
-        </div>
-      </section>
-
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="overline mb-3">Why EEC</div>
-          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light max-w-3xl mb-12">
-            Built for procurement teams, not for browsing.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WHY.map(({ title, body }) => (
-              <div key={title} className="border hairline p-8 bg-surface">
-                <div className="font-display text-xl text-[#012D76] mt-1 mb-2">{title}</div>
-                <p className="text-sm text-[#3A4759] leading-relaxed">{body}</p>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {WHY.map(({ title, body }) => (
+            <div key={title} className="border hairline p-8 bg-surface">
+              <div className="font-display text-xl text-[#012D76] mt-1 mb-2">{title}</div>
+              <p className="text-sm text-[#3A4759] leading-relaxed">{body}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -211,7 +178,7 @@ export default function ForBuyers() {
                   Go to dashboard <ArrowUpRight size={16} />
                 </Link>
               ) : (
-                <Link to="/login" className="eec-btn-secondary" data-testid="buyers-cta-signin">Go to dashboard <ArrowUpRight size={16} /></Link>
+                <Link to="/login" className="eec-btn-secondary" data-testid="buyers-cta-signin">Sign in</Link>
               )}
             </div>
           </div>

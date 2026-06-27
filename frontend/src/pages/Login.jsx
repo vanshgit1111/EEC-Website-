@@ -18,10 +18,6 @@ export default function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!email.includes("@")) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
     setLoading(true);
     try {
       const { data } = await api.post("/auth/login", { email: email.toLowerCase(), password });
@@ -30,8 +26,7 @@ export default function Login() {
       const dest = location.state?.from || (data.role === "admin" ? "/admin" : data.role === "supplier" ? "/supplier" : "/buyer");
       navigate(dest, { replace: true });
     } catch (e) {
-      const detail = formatApiErrorDetail(e.response?.data?.detail);
-      toast.error(detail === "Invalid credentials" ? "Incorrect password. Reset your password →" : detail || "No account found for this email address. Create an account →");
+      toast.error(formatApiErrorDetail(e.response?.data?.detail) || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -44,45 +39,30 @@ export default function Login() {
     window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
   };
 
-  const requestPasswordReset = async () => {
-    if (!email.includes("@")) {
-      toast.error("Enter your email address first.");
-      return;
-    }
-    try {
-      await api.post("/auth/password/reset-request", { email: email.toLowerCase() });
-      toast.success("If an account exists, reset instructions will be sent.");
-    } catch (e) {
-      toast.error(formatApiErrorDetail(e.response?.data?.detail) || "Password reset request failed.");
-    }
-  };
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-6 py-16" data-testid="login-page">
-      <Seo title="Sign In — EEC Buyer & Supplier Portal" description="Sign in to access your buyer or supplier dashboard." robots="noindex" />
+      <Seo title="Sign in — Elan Exports" description="Sign in to access your buyer or supplier dashboard." robots="noindex" />
       <div className="w-full max-w-md border hairline p-10 bg-surface">
         <div className="overline mb-3">Sign in</div>
         <h1 className="font-display text-3xl text-[#012D76] tracking-tight mb-2">Welcome back to EEC.</h1>
-        <p className="text-sm text-[#3A4759] mb-8">Access your EEC Buyer Portal or Supplier Portal.</p>
+        <p className="text-sm text-[#3A4759] mb-8">Access your buyer or supplier portal.</p>
         {params.get("error") === "oauth" && (
           <div className="mb-4 text-sm text-red-400">Google sign-in failed. Please try again.</div>
         )}
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label className="overline text-[#3A4759]">· Email ·</label>
+            <label className="overline text-[#3A4759]">Email</label>
             <input
               type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
               className="mt-2 w-full bg-[#FFFFFF] border hairline px-4 py-3 text-[#012D76] focus:outline-none focus:border-[#C9A23F]/70"
               data-testid="login-email"
             />
           </div>
           <div>
-            <label className="overline text-[#3A4759]">· Password ·</label>
+            <label className="overline text-[#3A4759]">Password</label>
             <div className="relative mt-2">
               <input
                 type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
                 className="w-full bg-[#FFFFFF] border hairline px-4 py-3 pr-12 text-[#012D76] focus:outline-none focus:border-[#C9A23F]/70"
                 data-testid="login-password"
               />
@@ -97,9 +77,6 @@ export default function Login() {
               </button>
             </div>
           </div>
-          <button type="button" onClick={requestPasswordReset} className="text-xs text-[#C9A23F] hover:text-[#DBB85A]">
-            Forgot password?
-          </button>
           <button type="submit" disabled={loading} className="eec-btn-primary w-full" data-testid="login-submit">
             {loading ? "Signing in…" : "Sign in"} <ArrowUpRight size={14} />
           </button>

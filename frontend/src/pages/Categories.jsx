@@ -20,20 +20,20 @@ const fallbackCategories = [
   {
     id: "fresh",
     name: "Fresh & Agricultural Products",
-    tagline: "Fruits, vegetables, organic produce",
+    tagline: "Fruits, vegetables, organic produce, floriculture.",
     image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "healthcare",
     name: "Healthcare & Hospital Supplies",
     tagline: "Medical devices, pharmaceuticals, hospital consumables.",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "home-textile",
     name: "Home Textile, Apparel & Hospitality Products",
     tagline: "Bed linen, towels, uniforms, hotel amenities.",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "eco",
@@ -59,9 +59,8 @@ export default function Categories() {
   return (
     <div data-testid="categories-page">
       <Seo
-        title="Product Categories | Global Sourcing Solutions | EEC"
-        description="Explore EEC's global sourcing categories and connect with verified manufacturers across food, textiles, healthcare, consumer products and more. Singapore headquartered with expertise across India and Asia."
-        canonical="https://eectrade.com/categories"
+        title="Categories — Elan Exports"
+        description={`Active sourcing desks across six categories. We run dedicated supplier benches, audit calendars and price benchmarks for each.`}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -78,7 +77,8 @@ export default function Categories() {
             Active sourcing desks across <span className="gold-text">six categories.</span>
           </h1>
           <p className="mt-6 text-[#3A4759] max-w-2xl">
-            Explore the product categories EEC sources, the supplier qualification criteria, certifications and sourcing requirements used to evaluate manufacturers for institutional procurement programmes.
+            We run dedicated supplier benches, audit calendars and price benchmarks for each. Click a
+            category to see the brief format we use.
           </p>
         </div>
       </section>
@@ -86,15 +86,13 @@ export default function Categories() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((c, i) => (
-            <div key={c.id} className="relative overflow-hidden border hairline bg-surface group h-full" data-testid={`category-item-${c.id}`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+            <div key={c.id} className="relative overflow-hidden border hairline bg-surface group" data-testid={`category-item-${c.id}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
                   <img
                     src={c.image}
-                    alt={c.alt || (c.id === "healthcare" ? "Healthcare laboratory and medical supplies — hospital equipment, pharmaceuticals and consumables sourcing" : c.id === "home-textile" ? "Apparel and textile production — home textiles, uniforms and hospitality product sourcing" : c.name)}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700"
+                    alt={c.name}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
                 <div className="p-8 flex flex-col justify-between">
@@ -104,7 +102,7 @@ export default function Categories() {
                     <p className="text-[#3A4759] text-sm leading-relaxed">{c.tagline}</p>
                   </div>
                   <Link to="/buyer/intake" className="inline-flex items-center gap-2 text-[#C9A23F] hover:text-[#DBB85A] text-sm tracking-wide mt-6 self-start" data-testid={`category-cta-${c.id}`}>
-                    {c.id === "processed" ? "Brief us on Processed" : c.id === "fresh" ? "Brief us on Fresh" : c.id === "healthcare" ? "Brief us on Healthcare" : c.id === "home-textile" ? "Brief us on Home Textiles" : c.id === "eco" ? "Brief us on Eco-Friendly" : "Brief us on Food"} <ArrowUpRight size={14} />
+                    Brief us on {c.name.split(" ")[0]} <ArrowUpRight size={14} />
                   </Link>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, TrendingUp, Handshake } from "lucide-react";
+import { ArrowUpRight, Factory, FileBadge, TrendingUp, Handshake } from "lucide-react";
 import Seo from "@/components/Seo";
 import { useAuth } from "@/context/AuthContext";
 
@@ -10,6 +10,8 @@ const SECONDARY = "https://images.unsplash.com/photo-1730584474338-aa8d9d186bf7?
 const BENEFITS = [
   { icon: TrendingUp, title: "Quality, recurring orders", desc: "Designed for long term sourcing partnerships rather than one off transactions, EEC connects qualified suppliers with institutional buyers through structured procurement programmes and clearly defined sourcing requirements." },
   { icon: Handshake, title: "Direct buyer access", desc: "EEC pre-qualifies you. You meet procurement decision-makers — not category assistants or intermediary agents. Your factory is presented with an EEC audit report, not a cold profile." },
+  { icon: FileBadge, title: "Faster payments", desc: "EEC commercial terms are buyer-LC or 30/60 wired, not 120-day creep." },
+  { icon: Factory, title: "Capacity planning", desc: "1–3 quarter demand visibility from our buyer book gives you forward planning confidence." },
 ];
 
 const REQS = [
@@ -25,7 +27,7 @@ const FAQ = [
   ["Who can apply to join the EEC Supplier Network?", "Manufacturers and producers across a range of industries are welcome to apply. We evaluate suppliers based on manufacturing capability, product quality, export readiness, compliance standards and alignment with buyer requirements."],
   ["How does EEC qualify suppliers?", "Every supplier undergoes a qualification process that may include reviewing manufacturing capabilities, production capacity, quality systems, certifications, export experience and operational transparency. The evaluation process helps ensure suppliers meet the expectations of international buyers."],
   ["Does joining the EEC Supplier Network guarantee orders?", "No. Joining the EEC Supplier Network does not guarantee purchase orders or contracts. Qualified suppliers may be considered for relevant sourcing opportunities when their products, capabilities and commercial offering align with buyer requirements."],
-  ["Which countries and industries does EEC serve?", "EEC works with institutional buyers across the EU, US, Canada, Middle East, Africa and APAC. Our sourcing expertise spans Food Commodities, Processed & Packaged Foods, Fresh & Agricultural Products, Healthcare & Hospital Supplies, Home Textile, Apparel & Hospitality Products, and Eco-Friendly, Sustainable & Organic Products."],
+  ["Which countries and industries does EEC serve?", "EEC works with institutional buyers across the EU, US, Canada, Middle East, Africa and APAC. Our sourcing expertise spans food commodities, fresh and processed foods, home textiles, hospital textile supplies, consumer goods, sustainable products and other manufacturing sectors."],
   ["Does EEC work only with suppliers from India and Asia?", "No. EEC works with verified manufacturers and suppliers worldwide. While we have extensive sourcing expertise and a strong supplier network across India and Asia, we also support sourcing from other regions based on buyer requirements."],
   ["What makes EEC different from a B2B marketplace?", "EEC is a global sourcing consultancy, not a marketplace. We work closely with buyers and suppliers throughout the sourcing process by identifying suitable manufacturing partners, facilitating procurement, supporting supplier qualification and helping build long term business relationships."],
 ];
@@ -41,49 +43,9 @@ export default function ForSuppliers() {
         title="Join EEC Supplier Network — Vetted Export Opportunities India"
         description="EEC connects verified manufacturers with institutional buyers through transparent procurement and sourcing across India and Asia. Procurement expertise. Quality focused. Relationship driven."
         canonical="https://eectrade.com/for-suppliers"
+        robots="noindex"
         ogTitle="Join EEC Supplier Network — Vetted Export Buyers India"
         ogDescription="EEC pre qualifies manufacturers for institutional buyers across the world. Faster payment terms. Recurring orders."
-        jsonLd={[
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://eectrade.com" },
-              { "@type": "ListItem", position: 2, name: "For Suppliers", item: "https://eectrade.com/for-suppliers" },
-            ],
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "@id": "https://eectrade.com/for-suppliers#service",
-            name: "EEC Supplier Network — Vetted Indian and Asian Manufacturers",
-            serviceType: "Supplier Network Qualification",
-            provider: { "@id": "https://eectrade.com/#organization" },
-            description: "The EEC Supplier Network connects vetted Indian and Asian manufacturers with institutional buyers across global markets. Suppliers are qualified through a rigorous five-step process: IEC verification, GST check, financial review, factory audit, and compliance documentation review. EEC does not charge suppliers listing or activation fees.",
-            areaServed: ["IN", "VN", "BD", "ID", "TH"],
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            name: "How to Apply to the EEC Supplier Network",
-            totalTime: "P21D",
-            step: [
-              "Submit factory profile and documents",
-              "Documentation review (3–5 business days)",
-              "Virtual or on-ground factory audit",
-              "Activation in supplier desk",
-            ].map((name, index) => ({ "@type": "HowToStep", position: index + 1, name })),
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: FAQ.map(([question, answer]) => ({
-              "@type": "Question",
-              name: question,
-              acceptedAnswer: { "@type": "Answer", text: answer },
-            })),
-          },
-        ]}
       />
 
       <section className="relative overflow-hidden">
@@ -104,19 +66,11 @@ export default function ForSuppliers() {
               </Link>
             ) : (
               <Link to="/register?role=supplier" className="eec-btn-primary" data-testid="supplier-cta-apply">
-                Apply to the EEC Network <ArrowUpRight size={16} />
+                Apply to Network <ArrowUpRight size={16} />
               </Link>
             )}
             <Link to="/about" className="eec-btn-secondary">About EEC</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="py-14 border-b hairline bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <p className="text-[#3A4759] leading-relaxed max-w-4xl">
-            The EEC Supplier Network is a curated network of verified manufacturers and suppliers that connects qualified businesses with institutional buyers across global markets. Supported by EECs Singapore headquartered sourcing consultancy and expertise across India and Asia, the network promotes transparent, reliable and long term procurement partnerships. Approved suppliers gain access to recurring buyer programmes, clear sourcing briefs with defined specifications, and faster payment terms compared with typical direct export transactions.
-          </p>
         </div>
       </section>
 
@@ -174,13 +128,7 @@ export default function ForSuppliers() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 relative">
-            <img
-              src={SECONDARY}
-              alt="Manufacturing and export sourcing"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-[480px] object-cover"
-            />
+            <img src={SECONDARY} alt="Manufacturing and export sourcing" className="w-full h-[480px] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FFFFFF]/40 via-transparent to-transparent" aria-hidden="true" />
           </div>
           <div className="lg:col-span-6">
@@ -190,16 +138,15 @@ export default function ForSuppliers() {
             </h2>
             <ol className="space-y-6">
               {[
-                { title: "Submit factory profile and documents" },
-                { title: "Documentation review (3–5 business days)" },
-                { title: "Virtual or on-ground factory audit" },
-                { title: "Activation in supplier desk", desc: "Approved suppliers are enrolled in the EEC Supplier Network for their approved product category and begin receiving targeted requests for quotation that match their capabilities." },
+                "Submit factory profile and documents",
+                "Documentation review (3–5 business days)",
+                "Virtual or on-ground factory audit",
+                "Activation in supplier desk",
               ].map((s, i) => (
-                <li key={s.title} className="flex gap-4 items-start">
+                <li key={s} className="flex gap-4 items-start">
                   <span className="font-display text-3xl text-[#C9A23F]/80">{(i + 1).toString().padStart(2, "0")}</span>
                   <div className="pt-2">
-                    <div className="text-[#012D76]">{s.title}</div>
-                    {s.desc && <p className="text-sm text-[#3A4759] leading-relaxed mt-2">{s.desc}</p>}
+                    <div className="text-[#012D76]">{s}</div>
                   </div>
                 </li>
               ))}

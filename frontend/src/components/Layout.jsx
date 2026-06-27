@@ -21,12 +21,9 @@ function Logo({ size = "header" }) {
     <Link to="/" className="inline-flex items-center group" data-testid={size === "footer" ? "footer-brand-link" : "brand-link"}>
       <img
         src="/eec-logo.png"
-        alt="Elan Exports Consultancy — Singapore sourcing consultancy"
+        alt="Élan Exports Consultancy — Beyond Borders, Beyond Limits"
         className={`${heightClass} w-auto select-none transition-transform duration-300 group-hover:scale-[1.03]`}
         data-testid={size === "footer" ? "footer-logo" : "brand-logo"}
-        loading={size === "footer" ? "lazy" : "eager"}
-        decoding="async"
-        fetchPriority={size === "footer" ? "auto" : "high"}
         draggable="false"
       />
       <span className="sr-only">Élan Exports Consultancy</span>
@@ -145,53 +142,50 @@ export default function Layout({ children }) {
           <div>
             <img
               src="/eec-logo.png"
-              alt="Elan Exports Consultancy logo — Singapore registered sourcing consultancy"
+              alt="Élan Exports Consultancy"
               className="h-24 md:h-32 lg:h-40 w-auto mb-5 select-none"
               data-testid="footer-logo"
-              loading="lazy"
-              decoding="async"
               draggable="false"
             />
             <p className="text-sm text-[#3A4759] leading-relaxed max-w-xs">
-              Elan Exports Consultancy | Singapore Headquartered | Global Buyer & Supplier Network | Exclusive India & Asia Sourcing
+              Singapore headquartered sourcing consultancy acting as the embedded procurement arm for global buyers sourcing from India and Asia.
             </p>
           </div>
           <div>
             <div className="overline mb-4">Buyers</div>
             <ul className="space-y-2.5 text-sm text-[#3A4759]">
-              <li><Link to="/for-buyers" className="hover:text-[#012D76] transition-colors">Why EEC</Link></li>
-              <li><Link to="/buyer/intake" className="hover:text-[#012D76] transition-colors">Submit a brief</Link></li>
+              <li><Link to="/for-buyers" className="hover:text-[#012D76] transition-colors">For Buyers</Link></li>
+              <li><Link to="/buyer/intake" className="hover:text-[#012D76] transition-colors">Submit a sourcing brief</Link></li>
               <li><Link to="/services" className="hover:text-[#012D76] transition-colors">Services</Link></li>
+              <li><Link to="/categories" className="hover:text-[#012D76] transition-colors">Categories</Link></li>
             </ul>
           </div>
           <div>
             <div className="overline mb-4">Suppliers</div>
             <ul className="space-y-2.5 text-sm text-[#3A4759]">
-              <li><Link to="/for-suppliers" className="hover:text-[#012D76] transition-colors">Join network</Link></li>
-              <li><Link to="/register?role=supplier" className="hover:text-[#012D76] transition-colors">Apply</Link></li>
-              <li><Link to="/categories" className="hover:text-[#012D76] transition-colors">Categories</Link></li>
+              <li><Link to="/for-suppliers" className="hover:text-[#012D76] transition-colors">For Suppliers</Link></li>
+              <li><Link to="/register?role=supplier" className="hover:text-[#012D76] transition-colors">Apply to network</Link></li>
+              <li><Link to="/about" className="hover:text-[#012D76] transition-colors">About</Link></li>
             </ul>
           </div>
           <div>
             <div className="overline mb-4">Company</div>
             <ul className="space-y-2.5 text-sm text-[#3A4759]">
-              <li><Link to="/about" className="hover:text-[#012D76] transition-colors">About EEC</Link></li>
+              <li><Link to="/login" className="hover:text-[#012D76] transition-colors">Sign in</Link></li>
+              <li><Link to="/register" className="hover:text-[#012D76] transition-colors">Register</Link></li>
               <li><a href="mailto:partners@eectrade.com" className="hover:text-[#012D76] transition-colors">partners@eectrade.com</a></li>
-              <li className="text-[#6B7280]">Singapore | India</li>
+              <li className="text-[#6B7280]">Singapore · India · Asia</li>
             </ul>
           </div>
         </div>
         <div className="border-t hairline">
           <div className="max-w-7xl mx-auto px-5 lg:px-10 py-5 flex flex-col md:flex-row justify-between text-xs text-[#6B7280] gap-2">
-            <span>© 2026 Élan Exports Consultancy Pte. Ltd. All rights reserved.</span>
-            <span>Privacy Policy · Terms of Service</span>
+            <span>© {new Date().getFullYear()} Élan Exports Consultancy. All rights reserved.</span>
+            <span>SINGAPORE HQ · INDIA & ASIA OPERATIONS</span>
           </div>
         </div>
       </footer>
-      <div className="fixed bottom-0 left-0 z-40 hidden md:flex items-center gap-2 bg-[#012D76] text-white text-[10px] uppercase tracking-[0.22em] px-4 py-2">
-        SINGAPORE HQ <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> INDIA OPERATIONS
-      </div>
-      <a href="https://wa.me/6586784216" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-200" aria-label="Chat with EEC on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.7-6.415-1.9l-.448-.29-2.65.888.888-2.65-.29-.448A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
+      <a href="https://wa.me/6586784216" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform duration-200" aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.7-6.415-1.9l-.448-.29-2.65.888.888-2.65-.29-.448A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
     </div>
   );
 }

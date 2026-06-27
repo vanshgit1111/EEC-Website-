@@ -7,14 +7,6 @@ import Seo from "@/components/Seo";
 
 const BG = "https://images.unsplash.com/photo-1779700210487-a01758a3c55a";
 
-const ABOUT_FAQ = [
-  ["When was Elan Exports Consultancy established?", "Elan Exports Consultancy Pte. Ltd. was incorporated in Singapore in 2025. Since then, EEC has supported businesses with global sourcing, supplier qualification and procurement services across a range of industries."],
-  ["Is EEC a Singapore company?", "Yes. Elan Exports Consultancy Pte. Ltd. is headquartered in Singapore and serves buyers and suppliers across international markets through its global sourcing network."],
-  ["What does EEC do?", "EEC is a global sourcing consultancy that helps businesses identify, evaluate and work with verified manufacturers worldwide. Our services include supplier identification, supplier qualification, procurement coordination and sourcing support."],
-  ["What industries does EEC specialise in?", "EEC supports sourcing across Food Commodities, Processed & Packaged Foods, Fresh & Agricultural Products, Healthcare & Hospital Supplies, Home Textile, Apparel & Hospitality Products, and Eco-Friendly, Sustainable & Organic Products, depending on client requirements."],
-  ["What makes EEC different?", "EEC combines procurement expertise with a carefully developed global supplier network. Our focus on supplier qualification, transparent sourcing practices and long term partnerships helps businesses source with greater confidence while building reliable international supply chains."],
-];
-
 export default function About() {
   const { user } = useAuth();
   const isAuthed = user && user.user_id;
@@ -25,9 +17,8 @@ export default function About() {
   return (
     <div data-testid="about-page">
       <Seo
-        title="About Elan Exports Consultancy | Singapore Headquartered Global Sourcing Consultancy"
-        description="Elan Exports Consultancy (EEC) is a Singapore headquartered global sourcing consultancy connecting buyers with verified manufacturers worldwide. With particular expertise across India and Asia, we help businesses build reliable supply chain partnerships through procurement and sourcing."
-        canonical="https://eectrade.com/about"
+        title="About — Elan Exports Consultancy"
+        description={`We make India & Asia sourcing predictable for international buyers. Embedded supplier desks, on-ground audits and landed cost accountability.`}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -58,13 +49,18 @@ export default function About() {
           </div>
           <div className="lg:col-span-7 space-y-6 text-[#3A4759] leading-relaxed">
             <p>
-            Elan Exports Consultancy (EEC) was established to simplify international sourcing by helping businesses identify qualified manufacturing partners and build resilient supply chains. Headquartered in Singapore, EEC combines procurement expertise with a global supplier network to support buyers across a wide range of industries.
+              Élan Exports Consultancy was founded by ex-procurement leaders from global retail,
+              automotive and pharma companies who repeatedly faced the same problem: the gap between a
+              "supplier on paper" and a "supplier that can actually ship".
             </p>
             <p>
-              Rather than operating as a marketplace, EEC works as a strategic sourcing consultancy, supporting supplier identification, supplier qualification, procurement coordination and sourcing strategy. Our approach is built on transparency, collaboration and long term business relationships
+              EEC bridges that gap. We don't sell software, we don't run a marketplace, and we don't sell
+              listings to suppliers. We operate as the embedded sourcing arm for international buyers —
+              with skin in the game on landed cost, lead times and on-time-in-full.
             </p>
             <p>
-              While EEC has developed extensive sourcing expertise and a strong supplier network across India and Asia, we also work with verified manufacturers in other global markets to meet our clients' sourcing requirements.
+              Today we run dedicated supplier desks across six categories and operate from Mumbai, Bengaluru and
+              Singapore — with on-ground audit partners in Vietnam, Bangladesh, Indonesia and Thailand.
             </p>
           </div>
         </div>
@@ -85,7 +81,6 @@ export default function About() {
               <div className="text-xs text-[#6B7280] mt-2 tracking-widest uppercase">{s.v}</div>
             </div>
           ))}
-          <p className="md:col-span-3 text-xs uppercase tracking-[0.24em] text-[#6B7280]">All figures as of Q2 2026.</p>
         </div>
       </section>
 
@@ -93,13 +88,13 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="overline mb-3">Principles</div>
           <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light max-w-3xl mb-12">
-            How We Work
+            How we operate.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { t: "Strategic Sourcing", d: "Every sourcing project begins with a clear understanding of the buyer's objectives, product specifications and commercial requirements, enabling us to identify suppliers best suited to the project." },
-              { t: "Supplier Qualification", d: "We work with manufacturers that demonstrate strong production capabilities, quality management systems, export readiness and operational transparency, helping buyers make informed sourcing decisions." },
-              { t: "Long Term Partnerships", d: "We believe successful sourcing is built on trust, communication and collaboration. Our goal is to develop sustainable relationships that create long term value for both buyers and suppliers." },
+              { t: "Open-book commercials", d: "We disclose every layer of cost. Our fee is the only margin you pay us." },
+              { t: "Supplier-neutral", d: "We do not take listing or activation fees from suppliers. Buyer is the customer." },
+              { t: "Documentation-first", d: "Every shortlist comes with audit notes, financial sanity and risk flags." },
             ].map((p) => (
               <div key={p.t} className="border hairline p-8 bg-surface">
                 <div className="font-display text-xl text-[#012D76] mb-2">{p.t}</div>
@@ -114,25 +109,9 @@ export default function About() {
               </Link>
             ) : (
               <Link to="/buyer/intake" className="eec-btn-primary" data-testid="about-cta">
-                Talk to Our Sourcing Team <ArrowUpRight size={16} />
+                Start an engagement <ArrowUpRight size={16} />
               </Link>
             )}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 border-t hairline bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-8">
-            Frequently asked questions about EEC
-          </h2>
-          <div className="border hairline bg-elevated overflow-hidden">
-            {ABOUT_FAQ.map(([q, a], idx) => (
-              <div key={q} className={`${idx !== ABOUT_FAQ.length - 1 ? "border-b hairline" : ""} grid grid-cols-1 md:grid-cols-[36%_1fr]`}>
-                <div className="p-5 md:p-6 font-medium text-[#012D76]">{q}</div>
-                <div className="p-5 md:p-6 text-[#3A4759] leading-relaxed">{a}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

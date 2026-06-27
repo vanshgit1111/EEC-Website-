@@ -20,7 +20,7 @@ export default function BuyerPortal() {
 
   return (
     <PortalShell testid="buyer-portal-shell">
-    <Seo title="EEC Buyer Portal — Your Sourcing Dashboard" description="Your briefs and sourcing activity." robots="noindex" />
+    <Seo title="Buyer portal — Elan Exports" description="Your briefs and sourcing activity." robots="noindex" />
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16" data-testid="buyer-portal">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
         <div>
@@ -39,8 +39,8 @@ export default function BuyerPortal() {
         {[
           { icon: Inbox, label: "Briefs submitted", value: intakes.length },
           { icon: Layers, label: "Active categories", value: new Set(intakes.map((i) => i.product_category)).size },
-          { icon: Globe2, label: "Countries sourced", value: new Set(intakes.map((i) => i.country)).size },
-          { icon: FileBarChart, label: "Program status", value: intakes.length ? "Live" : "No active programs" },
+          { icon: Globe2, label: "Countries", value: new Set(intakes.map((i) => i.country)).size },
+          { icon: FileBarChart, label: "Status", value: intakes.length ? "Live" : "Idle" },
         ].map(({ icon: Icon, label, value }) => (
           <div key={label} className="border hairline bg-surface p-6">
             <Icon size={18} className="text-[#C9A23F]" />
@@ -59,8 +59,7 @@ export default function BuyerPortal() {
           <div className="p-10 text-[#6B7280] text-sm">Loading…</div>
         ) : intakes.length === 0 ? (
           <div className="p-10 text-center">
-            <h2 className="font-display text-2xl text-[#012D76] mb-3">You haven't submitted a sourcing brief yet.</h2>
-            <p className="text-[#3A4759] mb-6">Submit a brief to start your first EEC sourcing program. It takes under 5 minutes and our team responds within 48 hours.</p>
+            <p className="text-[#3A4759] mb-4">You haven't submitted any briefs yet.</p>
             <Link to="/buyer/intake" className="eec-btn-primary" data-testid="buyer-portal-empty-cta">
               Submit your first brief <ArrowUpRight size={14} />
             </Link>
