@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-6 py-16" data-testid="login-page">
-      <Seo title="Sign in — Elan Exports" description="Sign in to access your buyer or supplier dashboard." robots="noindex" />
+      <Seo title="Sign In | Elan Exports Consultancy" description="Sign in to access your buyer or supplier dashboard." robots="noindex" />
       <div className="w-full max-w-md border hairline p-10 bg-surface">
         <div className="overline mb-3">Sign in</div>
         <h1 className="font-display text-3xl text-[#012D76] tracking-tight mb-2">Welcome back to EEC.</h1>
@@ -88,7 +88,7 @@ export default function Login() {
           Continue with Google
         </button>
         <div className="mt-6 text-sm text-[#3A4759] text-center">
-          New to EEC? <Link to="/register" className="text-[#C9A23F] hover:text-[#DBB85A]" data-testid="login-to-register">Create an account</Link>
+          New to EEC? <Link to="/register" className="text-[#8F7228] hover:text-[#DBB85A]" data-testid="login-to-register">Create an account</Link>
         </div>
       </div>
     </div>

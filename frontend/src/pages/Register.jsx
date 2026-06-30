@@ -43,16 +43,16 @@ export default function Register() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-6 py-16" data-testid="register-page">
-      <Seo title="Create account — Elan Exports" description="Create a buyer or supplier account at Elan Exports." robots="noindex" />
+      <Seo title="Create Account | Elan Exports Consultancy" description="Create a buyer or supplier account at Elan Exports Consultancy." robots="noindex" />
       <div className="w-full max-w-lg border hairline p-10 bg-surface">
         <div className="overline mb-3">Create account</div>
         <h1 className="font-display text-3xl text-[#012D76] tracking-tight mb-2">Join EEC.</h1>
-        <p className="text-sm text-[#3A4759] mb-8">Buyers and suppliers — choose your role.</p>
+        <p className="text-sm text-[#3A4759] mb-8">Buyers and suppliers. Choose your role.</p>
 
         <div className="grid grid-cols-2 gap-2 mb-6">
           {[
-            { v: "buyer", label: "I'm a Buyer" },
-            { v: "supplier", label: "I'm a Supplier" },
+            { v: "buyer", label: "Buyer Account" },
+            { v: "supplier", label: "Supplier Account" },
           ].map((r) => (
             <button
               key={r.v}
@@ -111,7 +111,7 @@ export default function Register() {
         </button>
 
         <div className="mt-6 text-sm text-[#3A4759] text-center">
-          Already registered? <Link to="/login" className="text-[#C9A23F] hover:text-[#DBB85A]">Sign in</Link>
+          Already registered? <Link to="/login" className="text-[#8F7228] hover:text-[#DBB85A]">Sign in</Link>
         </div>
       </div>
       <style>{`.input-eec{margin-top:0.5rem;width:100%;background:#05050A;border:1px solid rgba(255,255,255,0.08);padding:0.75rem 1rem;color:#fff;outline:none;}.input-eec:focus{border-color:rgba(212,175,55,0.5);}`}</style>

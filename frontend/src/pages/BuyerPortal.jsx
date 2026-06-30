@@ -20,7 +20,7 @@ export default function BuyerPortal() {
 
   return (
     <PortalShell testid="buyer-portal-shell">
-    <Seo title="Buyer portal — Elan Exports" description="Your briefs and sourcing activity." robots="noindex" />
+    <Seo title="Buyer Portal | Elan Exports Consultancy" description="Your briefs and sourcing activity." robots="noindex" />
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16" data-testid="buyer-portal">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
         <div>
@@ -43,7 +43,7 @@ export default function BuyerPortal() {
           { icon: FileBarChart, label: "Status", value: intakes.length ? "Live" : "Idle" },
         ].map(({ icon: Icon, label, value }) => (
           <div key={label} className="border hairline bg-surface p-6">
-            <Icon size={18} className="text-[#C9A23F]" />
+            <Icon size={18} className="text-[#A6831F]" />
             <div className="font-display text-3xl text-[#012D76] mt-4">{value}</div>
             <div className="text-xs text-[#6B7280] mt-2 tracking-widest uppercase">{label}</div>
           </div>
@@ -59,7 +59,7 @@ export default function BuyerPortal() {
           <div className="p-10 text-[#6B7280] text-sm">Loading…</div>
         ) : intakes.length === 0 ? (
           <div className="p-10 text-center">
-            <p className="text-[#3A4759] mb-4">You haven't submitted any briefs yet.</p>
+            <p className="text-[#3A4759] mb-4">No sourcing briefs submitted yet.</p>
             <Link to="/buyer/intake" className="eec-btn-primary" data-testid="buyer-portal-empty-cta">
               Submit your first brief <ArrowUpRight size={14} />
             </Link>
@@ -84,7 +84,7 @@ export default function BuyerPortal() {
                     <td className="p-4 text-[#3A4759]">{it.product_category}</td>
                     <td className="p-4 text-[#3A4759]">{it.country}</td>
                     <td className="p-4 text-[#3A4759]">{it.annual_volume}</td>
-                    <td className="p-4"><span className="text-[#C9A23F] text-xs uppercase tracking-widest">{it.status}</span></td>
+                    <td className="p-4"><span className="text-[#8F7228] text-xs uppercase tracking-widest">{it.status}</span></td>
                     <td className="p-4 text-[#6B7280]">{new Date(it.created_at).toLocaleDateString()}</td>
                   </tr>
                 ))}

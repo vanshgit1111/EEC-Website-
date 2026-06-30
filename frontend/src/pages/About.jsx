@@ -2,10 +2,52 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-
 import Seo from "@/components/Seo";
+import { COMPANY } from "@/constants/company";
 
-const BG = "https://images.unsplash.com/photo-1779700210487-a01758a3c55a";
+// TODO: Replace empty office corridor with sourcing/logistics/factory imagery for About page hero
+const BG = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80";
+
+const ABOUT_FAQ = [
+  {
+    q: "When was Elan Exports Consultancy established?",
+    a: `${COMPANY.legalName} was incorporated in Singapore on ${COMPANY.incorporationDateDisplay} (UEN: ${COMPANY.uen}) at ${COMPANY.addressFull}. Since incorporation, EEC has built an active sourcing and supplier network across India and Asia, supporting procurement teams across Europe, the US, the Middle East and Asia-Pacific.`,
+  },
+  {
+    q: "Is EEC a Singapore company?",
+    a: `Yes. ${COMPANY.legalName} is incorporated in Singapore under UEN ${COMPANY.uen}, registered on ${COMPANY.incorporationDateDisplay} at ${COMPANY.addressFull}. The company is Singapore Headquartered with procurement and operations teams based in India.`,
+  },
+  {
+    q: "What does EEC do?",
+    a: "Elan Exports Consultancy (EEC) is a Singapore Headquartered sourcing and procurement consultancy that connects international buyers with verified manufacturers across India and Asia. Core services include supplier identification and qualification, factory assessments, landed cost modelling and shipment coordination. Available through Scout, Engage or Embed engagement tiers.",
+  },
+  {
+    q: "Where does EEC operate?",
+    a: "EEC is Singapore Headquartered with procurement and operations teams based in India. Active sourcing is conducted primarily across India, with select verified manufacturers in Vietnam, Bangladesh, Indonesia and Thailand for specific product requirements. Buyer programmes serve procurement teams across Europe, the US, the Middle East and Asia-Pacific.",
+  },
+  {
+    q: "What industries does EEC specialise in?",
+    a: "EEC operates six active sourcing desks: Food Commodities, Processed and Packaged Foods, Fresh and Agricultural Products, Healthcare and Hospital Textile Supplies, Home Textile, Apparel and Hospitality Products, and Eco-Friendly, Sustainable and Organic Products. All sourcing is from verified manufacturers across India and Asia.",
+    link: "/categories",
+    linkText: "See all categories",
+  },
+  {
+    q: "How does EEC qualify suppliers?",
+    a: "EEC qualifies manufacturers through IEC registration, GST verification, financial checks, factory assessments and compliance documentation review. Trading and re-export businesses are not eligible.",
+    link: "/for-suppliers#qualification",
+    linkText: "See full requirements",
+  },
+  {
+    q: "How does EEC price its services?",
+    a: "EEC does not publish fixed pricing. Scout is a one-time fixed-fee project. Engage (per sourcing project) and Embed (quarterly retainer) are priced based on category complexity, order volume and sourcing geography, confirmed at or after the initial discovery call. No fees are charged to suppliers at any stage.",
+    link: "/services",
+    linkText: "See engagement models",
+  },
+  {
+    q: "What makes EEC different from a marketplace?",
+    a: "EEC is a sourcing consultancy, not a marketplace. Marketplaces earn revenue from supplier listings or transaction commissions. EEC charges buyers a service fee based on engagement tier. EEC negotiates on open-book terms. Every supplier is presented with an EEC audit report, not a cold profile. Suppliers are recommended based on quality and fit, with no commercial conflict of interest.",
+  },
+];
 
 export default function About() {
   const { user } = useAuth();
@@ -14,91 +56,166 @@ export default function About() {
     isAuthed && user.role === "admin" ? "/admin"
     : isAuthed && user.role === "supplier" ? "/supplier"
     : "/buyer";
+
   return (
     <div data-testid="about-page">
       <Seo
-        title="About — Elan Exports Consultancy"
-        description={`We make India & Asia sourcing predictable for international buyers. Embedded supplier desks, on-ground audits and landed cost accountability.`}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home" },
-            { "@type": "ListItem", position: 2, name: "About" }
-          ]
-        }}
+        title="About Elan Exports Consultancy | Singapore Headquartered Global Sourcing Consultancy"
+        description="Elan Exports Consultancy (EEC) is a Singapore Headquartered global sourcing consultancy connecting buyers with verified manufacturers worldwide. With particular expertise across India and Asia, we help businesses build reliable procurement and supply chain partnerships."
+        canonical="https://eectrade.com/about"
+        ogTitle="About EEC | Singapore Sourcing Consultancy | Elan Exports Consultancy"
+        ogDescription="Elan Exports Consultancy (EEC) is a Singapore Headquartered global sourcing consultancy connecting buyers with verified manufacturers worldwide."
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://eectrade.com" },
+              { "@type": "ListItem", position: 2, name: "About", item: "https://eectrade.com/about" },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: COMPANY.legalName,
+            alternateName: COMPANY.shortName,
+            url: "https://eectrade.com",
+            email: COMPANY.contactEmail,
+            foundingDate: COMPANY.incorporationDateISO,
+            identifier: COMPANY.uen,
+            description: "Singapore Headquartered sourcing and procurement consultancy connecting global buyers with verified manufacturers across India and Asia. Incorporated January 2025.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: COMPANY.addressStreet,
+              addressLocality: COMPANY.addressCity,
+              postalCode: COMPANY.addressPostalCode,
+              addressCountry: COMPANY.addressCountry,
+            },
+            areaServed: ["Europe", "United States", "Middle East", "Asia-Pacific"],
+            knowsAbout: ["Sourcing", "Procurement", "Supplier qualification", "Factory audits", "Landed cost modelling", "India manufacturing", "Asia supply chain"],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: ABOUT_FAQ.map(({ q, a }) => ({
+              "@type": "Question",
+              name: q,
+              acceptedAnswer: { "@type": "Answer", text: a },
+            })),
+          },
+        ]}
       />
+
+      {/* Hero */}
       <section className="relative">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${BG})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/92 to-[#FFFFFF]/60" />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${BG})` }} aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-[#FFFFFF]/20" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 lg:py-36">
           <div className="overline mb-4">About EEC</div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl">
-            We do one thing — make India &amp; Asia sourcing <span className="gold-text">predictable.</span>
-          </h1>
+          <h1 className="sr-only">About Elan Exports Consultancy. Singapore Headquartered Sourcing Consultancy.</h1>
+          <p className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl" aria-hidden="true">
+            Building Trusted Global Sourcing Partnerships
+          </p>
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Origin */}
+      <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="overline mb-3">Origin</div>
             <h2 className="font-display text-3xl text-[#012D76] tracking-tight font-light">
-              Born inside procurement teams. Not in a marketplace.
+              Connecting Global Buyers with Verified Manufacturers
             </h2>
           </div>
           <div className="lg:col-span-7 space-y-6 text-[#3A4759] leading-relaxed">
             <p>
-              Élan Exports Consultancy was founded by ex-procurement leaders from global retail,
-              automotive and pharma companies who repeatedly faced the same problem: the gap between a
-              "supplier on paper" and a "supplier that can actually ship".
+              Elan Exports Consultancy (EEC) was established to simplify international sourcing by helping businesses identify reliable manufacturing partners and build resilient supply chains. Headquartered in Singapore, EEC combines procurement expertise with a global supplier network to support buyers across a wide range of industries.
             </p>
             <p>
-              EEC bridges that gap. We don't sell software, we don't run a marketplace, and we don't sell
-              listings to suppliers. We operate as the embedded sourcing arm for international buyers —
-              with skin in the game on landed cost, lead times and on-time-in-full.
+              Rather than operating as a marketplace, EEC works as a strategic sourcing consultancy, supporting supplier identification, supplier qualification, procurement coordination and sourcing strategy. Our approach is built on transparency, collaboration and long-term business relationships.
             </p>
             <p>
-              Today we run dedicated supplier desks across six categories and operate from Mumbai, Bengaluru and
-              Singapore — with on-ground audit partners in Vietnam, Bangladesh, Indonesia and Thailand.
+              While EEC has developed extensive sourcing expertise and a strong supplier network across India and Asia, we also work with verified manufacturers in other global markets to meet our clients' sourcing requirements.
+            </p>
+            <Link to="/categories" className="text-sm text-[#012D76] hover:underline">See our active sourcing categories.</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-20 lg:py-24 border-t hairline bg-surface">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="border hairline p-8 bg-surface">
+            <div className="text-xs text-[#8F7228] tracking-[0.22em] uppercase mb-4">OUR MISSION</div>
+            <p className="text-[#3A4759] leading-relaxed">
+              To simplify global sourcing by connecting businesses with qualified manufacturing partners, delivering transparent procurement solutions and building long-term relationships that create value for buyers and suppliers alike.
+            </p>
+          </div>
+          <div className="border hairline p-8 bg-surface">
+            <div className="text-xs text-[#8F7228] tracking-[0.22em] uppercase mb-4">OUR VISION</div>
+            <p className="text-[#3A4759] leading-relaxed">
+              To be the trusted global sourcing partner for businesses seeking reliable manufacturers, resilient supply chains and sustainable international growth.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-24 border-t hairline bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { k: "Significant", v: "Sourced volume managed" },
-            { k: "42", v: "Active categories" },
-            { k: "180+", v: "Audited factories on bench" },
-            { k: "11", v: "Buyer countries served" },
-            { k: "94%", v: "OTIF rate across active programs" },
-            { k: "9.1%", v: "Avg. landed cost reduction (Y1)" },
-          ].map((s) => (
-            <div key={s.k} className="border-l border-[#C9A23F]/70 pl-6 py-2">
-              <div className="font-display text-4xl text-[#012D76]">{s.k}</div>
-              <div className="text-xs text-[#6B7280] mt-2 tracking-widest uppercase">{s.v}</div>
+      {/* Leadership */}
+      <section className="py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="overline mb-3">Leadership</div>
+          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-10">
+            Founded by procurement practitioners.
+          </h2>
+          <div className="border hairline p-8 bg-surface max-w-2xl flex gap-8 items-start">
+            {/* TODO: Replace placeholder with Shirali Shetty headshot when approved */}
+            <div className="w-16 h-16 rounded-full bg-[#012D76] flex items-center justify-center shrink-0">
+              <span className="text-white font-display text-xl">SS</span>
             </div>
-          ))}
+            <div>
+              <div className="font-display text-xl text-[#012D76] mb-1">Shirali Shetty</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-[#8F7228] mb-4">Founder, Elan Exports Consultancy</div>
+              <p className="text-sm text-[#3A4759] leading-relaxed">
+                Shirali brings extensive procurement and sourcing experience across India and Asia. EEC was founded on the conviction that international buyers deserve the same supply chain rigour that large enterprises build in-house, accessible as a service, without the overhead.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Principles */}
+      <section className="py-20 lg:py-24 border-t hairline bg-surface">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="overline mb-3">Principles</div>
           <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light max-w-3xl mb-12">
-            How we operate.
+            How We Work
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { t: "Open-book commercials", d: "We disclose every layer of cost. Our fee is the only margin you pay us." },
-              { t: "Supplier-neutral", d: "We do not take listing or activation fees from suppliers. Buyer is the customer." },
-              { t: "Documentation-first", d: "Every shortlist comes with audit notes, financial sanity and risk flags." },
+              {
+                t: "Strategic Sourcing",
+                d: "Every sourcing project begins with a clear understanding of buyer objectives, product specifications and commercial requirements, enabling us to identify suppliers best suited to the project.",
+                link: null,
+              },
+              {
+                t: "Supplier Qualification",
+                d: "We work with manufacturers that demonstrate strong production capabilities, quality management systems, export readiness and operational transparency, helping buyers make informed sourcing decisions.",
+                link: "/for-suppliers#qualification",
+                linkText: "Full supplier qualification process.",
+              },
+              {
+                t: "Long-Term Partnerships",
+                d: "We believe successful sourcing is built on trust, communication and collaboration. Our goal is to develop sustainable relationships that create long-term value for both buyers and suppliers.",
+                link: null,
+              },
             ].map((p) => (
               <div key={p.t} className="border hairline p-8 bg-surface">
                 <div className="font-display text-xl text-[#012D76] mb-2">{p.t}</div>
                 <div className="text-sm text-[#3A4759] leading-relaxed">{p.d}</div>
+                {p.link && (
+                  <Link to={p.link} className="block mt-3 text-xs text-[#012D76] hover:underline">{p.linkText}</Link>
+                )}
               </div>
             ))}
           </div>
@@ -109,9 +226,42 @@ export default function About() {
               </Link>
             ) : (
               <Link to="/buyer/intake" className="eec-btn-primary" data-testid="about-cta">
-                Start an engagement <ArrowUpRight size={16} />
+                Talk to Our Sourcing Team <ArrowUpRight size={16} />
               </Link>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 lg:py-24 border-t hairline bg-surface">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="overline mb-3">FAQ</div>
+          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light max-w-3xl mb-12">
+            Frequently asked questions about EEC sourcing consultancy
+          </h2>
+          <div className="border hairline overflow-hidden bg-[#FFFFFF]">
+            {ABOUT_FAQ.map(({ q, a, link, linkText }, idx) => (
+              <div key={q} className={`grid grid-cols-1 md:grid-cols-[36%_1fr] ${idx !== ABOUT_FAQ.length - 1 ? "border-b hairline" : ""}`}>
+                <div className="p-5 md:p-6 font-medium text-[#012D76]">{q}</div>
+                <div className="p-5 md:p-6 text-[#3A4759] leading-relaxed">
+                  {a}{link && <> <Link to={link} className="text-[#012D76] hover:underline font-medium">{linkText}.</Link></>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer CTA */}
+      <section className="py-20 bg-[#012D76] text-white grain">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <div className="overline mx-auto mb-4">Get Started</div>
+          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">Ready to work with EEC?</h2>
+          <p className="mt-4 text-white/75">No commitment required. The discovery call is free.</p>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <Link to="/buyer/intake" className="eec-btn-accent">Submit a sourcing brief</Link>
+            <Link to="/buyer/intake" className="eec-btn-secondary !text-white !border-white/25 hover:!bg-white/10">Book a free discovery call</Link>
           </div>
         </div>
       </section>

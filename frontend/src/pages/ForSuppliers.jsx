@@ -3,33 +3,45 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Factory, FileBadge, TrendingUp, Handshake } from "lucide-react";
 import Seo from "@/components/Seo";
 import { useAuth } from "@/context/AuthContext";
+import { COMPANY } from "@/constants/company";
 
 const BG = "https://images.unsplash.com/photo-1720036236697-018370867320?auto=format&fit=crop&w=1800&q=80";
-const SECONDARY = "https://images.unsplash.com/photo-1730584474338-aa8d9d186bf7?auto=format&fit=crop&w=1800&q=80";
+// TODO: Replace metalworking image with food/textile/packaged goods production image
+const SECONDARY = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80";
 
 const BENEFITS = [
-  { icon: TrendingUp, title: "Quality, recurring orders", desc: "Designed for long term sourcing partnerships rather than one off transactions, EEC connects qualified suppliers with institutional buyers through structured procurement programmes and clearly defined sourcing requirements." },
-  { icon: Handshake, title: "Direct buyer access", desc: "EEC pre-qualifies you. You meet procurement decision-makers — not category assistants or intermediary agents. Your factory is presented with an EEC audit report, not a cold profile." },
-  { icon: FileBadge, title: "Faster payments", desc: "EEC commercial terms are buyer-LC or 30/60 wired, not 120-day creep." },
-  { icon: Factory, title: "Capacity planning", desc: "1–3 quarter demand visibility from our buyer book gives you forward planning confidence." },
+  { icon: TrendingUp, title: "Quality, recurring orders", desc: "Designed for long-term sourcing partnerships rather than one-off transactions. EEC connects qualified suppliers with international procurement teams across Europe, the US, the Middle East and Asia through structured programmes and clearly defined sourcing requirements." },
+  { icon: Handshake, title: "Direct buyer access", desc: "EEC pre-qualifies you. You meet procurement decision-makers, not category assistants or intermediary agents. Your factory is presented with an EEC audit report, not a cold profile. Buyers span procurement teams across Europe, the US, the Middle East and Asia." },
+  { icon: FileBadge, title: "Faster payments", desc: "EEC targets structured payment terms and works to protect suppliers from extended payment cycles that erode working capital. Faster payment terms than typical direct export transactions." },
+  { icon: Factory, title: "Capacity planning", desc: "EEC shares buyer programme requirements and indicative volumes in advance, giving suppliers better visibility into pipeline demand than spot-RFQ models." },
 ];
 
 const REQS = [
   "Valid IEC (Import Export Code) and GST registration, current and in active compliance",
-  "Established manufacturing operations at the production facility level with a proven export history and prior international shipments. Trading and re export businesses are not eligible.",
-  "Factory audit-ready — BSCI, SEDEX, or equivalent willingness within 90 days of network activation",
+  "Established manufacturing operations at the production facility level with a proven export history and prior international shipments.",
+  "Factory audit-ready. BSCI, SEDEX or equivalent audit scheduled within 90 days of network activation",
   "Documented quality management system (ISO 9001 preferred; internal QMS acceptable if ISO is in progress)",
-  "Demonstrated export experience to NA, EU, ME or APAC markets",
+  "Demonstrated export experience to North America (NA), Europe (EU), Middle East (ME) or Asia-Pacific (APAC) markets",
+];
+
+const CERT_CARDS = [
+  { cat: "Food Commodities", certs: "HACCP, FSSC 22000 or ISO 22000, BRC/BRCGS · FSSAI (mandatory), MRL testing reports, Phytosanitary certificate · IEC, GST", note: null },
+  { cat: "Processed and Packaged Foods", certs: "BRC/BRCGS, HACCP, FSSC 22000 · FSSAI, IEC, GST", note: "IFS Food required for buyers in Germany and France." },
+  { cat: "Fresh and Agricultural Products", certs: "GlobalG.A.P., GRASP, SMETA · Phytosanitary certificate, MRL testing reports · IEC, GST", note: null },
+  { cat: "Healthcare and Hospital Textile Supplies", certs: "ISO 9001, OEKO-TEX Standard 100, BSCI · IEC, GST", note: "EEC sources hospital textiles, PPE, medical linen and non-regulated consumables. Medical devices, pharmaceuticals and regulated clinical products are outside EEC scope." },
+  { cat: "Home Textile, Apparel and Hospitality Products", certs: "BSCI, SEDEX, Oeko-Tex 100, GOTS, Oeko-Tex STEP · IEC, GST", note: null },
+  { cat: "Eco-Friendly, Sustainable and Organic Products", certs: "ISO 9001, GOTS, EU Organic, NPOP · IEC, GST", note: null },
 ];
 
 const FAQ = [
-  ["What is the EEC Supplier Network?", "The EEC Supplier Network is a curated network of verified manufacturers and suppliers connected with institutional buyers through Elan Exports Consultancy. As a Singapore headquartered global sourcing consultancy, we help facilitate international sourcing opportunities across multiple industries, with particular expertise in India and Asia."],
-  ["Who can apply to join the EEC Supplier Network?", "Manufacturers and producers across a range of industries are welcome to apply. We evaluate suppliers based on manufacturing capability, product quality, export readiness, compliance standards and alignment with buyer requirements."],
-  ["How does EEC qualify suppliers?", "Every supplier undergoes a qualification process that may include reviewing manufacturing capabilities, production capacity, quality systems, certifications, export experience and operational transparency. The evaluation process helps ensure suppliers meet the expectations of international buyers."],
+  ["What is the EEC Supplier Network?", "The EEC Supplier Network is a curated network of verified manufacturers connected with procurement teams through Elan Exports Consultancy. As a Singapore Headquartered global sourcing consultancy, EEC facilitates international sourcing opportunities across multiple categories, with particular expertise in India and Asia."],
+  ["Who can apply to join the EEC Supplier Network?", "Manufacturers and producers across the six EEC active categories are welcome to apply. We evaluate suppliers based on manufacturing capability, product quality, export readiness, compliance standards and alignment with buyer requirements. Trading and re-export businesses are not eligible."],
+  ["How does EEC qualify suppliers?", "EEC qualifies suppliers through a structured five-stage process: valid IEC and GST registration, established manufacturing operations with a proven export history (trading and re-export businesses are not eligible), factory audit-readiness with BSCI or SEDEX audit scheduled within 90 days of network activation, a documented quality management system (ISO 9001 preferred), and demonstrated export experience to North America, Europe, the Middle East or Asia-Pacific markets. Every qualifying supplier receives an EEC audit report that is shared with buyers, not a cold directory profile."],
+  ["Do I need all certifications to apply to EEC?", "No. You do not need every certification at application stage. Factory audit-readiness is what qualifies you. Specifically, willingness to schedule a BSCI or SEDEX audit within 90 days of network activation. EEC provides a certification roadmap during onboarding, aligned to the specific buyer markets your category targets."],
   ["Does joining the EEC Supplier Network guarantee orders?", "No. Joining the EEC Supplier Network does not guarantee purchase orders or contracts. Qualified suppliers may be considered for relevant sourcing opportunities when their products, capabilities and commercial offering align with buyer requirements."],
-  ["Which countries and industries does EEC serve?", "EEC works with institutional buyers across the EU, US, Canada, Middle East, Africa and APAC. Our sourcing expertise spans food commodities, fresh and processed foods, home textiles, hospital textile supplies, consumer goods, sustainable products and other manufacturing sectors."],
-  ["Does EEC work only with suppliers from India and Asia?", "No. EEC works with verified manufacturers and suppliers worldwide. While we have extensive sourcing expertise and a strong supplier network across India and Asia, we also support sourcing from other regions based on buyer requirements."],
-  ["What makes EEC different from a B2B marketplace?", "EEC is a global sourcing consultancy, not a marketplace. We work closely with buyers and suppliers throughout the sourcing process by identifying suitable manufacturing partners, facilitating procurement, supporting supplier qualification and helping build long term business relationships."],
+  ["Which countries and industries does EEC serve?", "EEC active sourcing categories are: Food Commodities, Processed and Packaged Foods, Fresh and Agricultural Products, Healthcare and Hospital Textile Supplies, Home Textile, Apparel and Hospitality Products, and Eco-Friendly, Sustainable and Organic Products. Buyers span procurement teams across the EU, US, Canada, Middle East and Asia-Pacific."],
+  ["Does EEC work only with suppliers from India and Asia?", "The EEC primary supplier network is across India, with select verified manufacturers in Vietnam, Bangladesh, Indonesia and Thailand. Suppliers from other markets may be considered for specific buyer requirements on a case-by-case basis."],
+  ["What makes EEC different from a B2B marketplace?", "EEC is a sourcing consultancy, not a marketplace. Buyer-fee model, open-book costs, no supplier listing fees. We work closely with buyers and suppliers throughout the sourcing process. Learn more", "/about"],
 ];
 
 export default function ForSuppliers() {
@@ -40,24 +52,45 @@ export default function ForSuppliers() {
   return (
     <div data-testid="for-suppliers-page">
       <Seo
-        title="Join EEC Supplier Network — Vetted Export Opportunities India"
-        description="EEC connects verified manufacturers with institutional buyers through transparent procurement and sourcing across India and Asia. Procurement expertise. Quality focused. Relationship driven."
+        title="Join EEC Supplier Network | Export to Global Buyers | EEC"
+        description="Apply to join the EEC verified supplier network. Connect with procurement teams across Europe, the US and the Middle East. IEC and GST registration required. No listing fees."
         canonical="https://eectrade.com/for-suppliers"
         robots="noindex"
-        ogTitle="Join EEC Supplier Network — Vetted Export Buyers India"
-        ogDescription="EEC pre qualifies manufacturers for institutional buyers across the world. Faster payment terms. Recurring orders."
+        ogTitle="Join EEC Supplier Network | Export to Global Buyers | EEC"
+        ogDescription="Apply to join the EEC verified supplier network. Connect with procurement teams across Europe, the US and the Middle East. IEC and GST registration required. No listing fees."
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://eectrade.com" },
+              { "@type": "ListItem", position: 2, name: "For Suppliers", item: "https://eectrade.com/for-suppliers" },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ.filter(entry => entry.length < 3).map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: { "@type": "Answer", text: answer },
+            })),
+          },
+        ]}
       />
 
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${BG})` }} aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-[#FFFFFF]/20" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 lg:py-36">
           <div className="overline mb-4">For Suppliers</div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl">
-            Build a recurring export book with <span className="gold-text font-medium">institutional buyers.</span>
-          </h1>
+          <h1 className="sr-only">Join the EEC Verified Supplier Network. Export to Global Buyers from India.</h1>
+          <p className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl" aria-hidden="true">
+            Build a recurring export book with <span className="gold-text font-medium">verified global buyers.</span>
+          </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl text-lg">
-            Join EECs qualified supplier network and connect with institutional buyer programmes across food commodities, fresh and agricultural products, processed and packaged foods, healthcare and hospital supplies, home textiles, apparel and hospitality products, and eco friendly, sustainable and organic products.
+            Join the EEC qualified supplier network and connect with international procurement programmes across food commodities, fresh and agricultural products, processed and packaged foods, healthcare and hospital textile supplies, home textiles, apparel and hospitality products, and eco-friendly, sustainable and organic products.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             {isAuthed ? (
@@ -69,38 +102,43 @@ export default function ForSuppliers() {
                 Apply to Network <ArrowUpRight size={16} />
               </Link>
             )}
-            <Link to="/about" className="eec-btn-secondary">About EEC</Link>
+            <Link to="#qualification" className="eec-btn-secondary">See qualification requirements</Link>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Why Join */}
+      <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="overline mb-3">Why join</div>
           <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light max-w-3xl">
-            What qualified suppliers get from EEC.
+            What Verified Indian Manufacturers Gain from the EEC Supplier Network
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {BENEFITS.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="border hairline p-8 bg-surface">
-                <Icon size={22} className="text-[#C9A23F]" />
+                <Icon size={22} className="text-[#A6831F]" />
                 <div className="font-display text-xl text-[#012D76] mt-6 mb-2">{title}</div>
                 <p className="text-sm text-[#3A4759] leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
+          <p className="mt-8 text-sm text-[#3A4759]">
+            <Link to="/for-buyers" className="text-[#012D76] hover:underline">See what buyers receive from EEC</Link>
+          </p>
         </div>
       </section>
 
-      <section className="py-24 border-t hairline bg-surface">
+      {/* Qualification */}
+      <section id="qualification" className="py-20 lg:py-24 border-t hairline bg-surface">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="overline mb-3">Qualification</div>
             <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light">
-              Minimum requirements to apply.
+              Supplier Qualification Requirements: What EEC Looks For Before Approval
             </h2>
             <p className="mt-4 text-[#3A4759] leading-relaxed">
-              EEC carefully evaluates every supplier for manufacturing capability, export readiness, quality management, compliance and operational transparency. Our focus is on building a network of verified manufacturers that supports transparent procurement and connects global buyers with qualified suppliers.
+              EEC carefully evaluates every supplier for manufacturing capability, export readiness, quality management, compliance and operational transparency. Meeting these requirements means your factory is presented to international procurement teams with an EEC audit report, not a cold profile or a directory listing.
             </p>
             {isAuthed ? (
               <Link to={dashboardHref} className="eec-btn-primary mt-8" data-testid="supplier-cta-req-dashboard">
@@ -113,6 +151,9 @@ export default function ForSuppliers() {
             )}
           </div>
           <div className="lg:col-span-7">
+            <div className="border hairline border-[#C9A23F]/60 bg-[#FDF8EE] p-4 mb-4 text-sm text-[#5C3A00]">
+              Important: Trading and re-export businesses are not eligible to apply. EEC works exclusively with manufacturers operating their own production facilities.
+            </div>
             <div className="border hairline">
               {REQS.map((r, i) => (
                 <div key={r} className={`p-6 flex items-start gap-4 ${i !== 0 ? "border-t hairline" : ""}`}>
@@ -121,32 +162,41 @@ export default function ForSuppliers() {
                 </div>
               ))}
             </div>
+            {!isAuthed && (
+              <Link to="/register?role=supplier" className="eec-btn-primary mt-6 inline-flex items-center gap-2" data-testid="supplier-cta-req-apply-2">
+                Start application <ArrowUpRight size={16} />
+              </Link>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Application Flow */}
+      <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 relative">
-            <img src={SECONDARY} alt="Manufacturing and export sourcing" className="w-full h-[480px] object-cover" />
+            <img src={SECONDARY} alt="Fresh produce and agricultural products from EEC supplier sourcing categories" loading="lazy" decoding="async" className="w-full h-[480px] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FFFFFF]/40 via-transparent to-transparent" aria-hidden="true" />
           </div>
           <div className="lg:col-span-6">
             <div className="overline mb-3">Application Flow</div>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-6">
-              4 steps from application to active.
+            <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-4">
+              How to Join the EEC Supplier Network: 4-Step Application Process
             </h2>
+            <p className="text-sm text-[#3A4759] leading-relaxed mb-6">
+              EEC supplier onboarding covers document submission, a structured qualification review and a factory assessment, all completed before a supplier profile is activated and shared with buyer procurement teams.
+            </p>
             <ol className="space-y-6">
               {[
                 "Submit factory profile and documents",
-                "Documentation review (3–5 business days)",
-                "Virtual or on-ground factory audit",
-                "Activation in supplier desk",
+                "Documentation review (3 to 5 business days)",
+                "Factory assessment: on-ground for food, healthcare and high-volume categories; documentary review for initial qualification in other categories. Audit type confirmed at documentation review stage.",
+                "Network activation: your factory profile and EEC audit report are made available to relevant buyer procurement teams. You are notified when your profile is matched to an active sourcing brief.",
               ].map((s, i) => (
-                <li key={s} className="flex gap-4 items-start">
-                  <span className="font-display text-3xl text-[#C9A23F]/80">{(i + 1).toString().padStart(2, "0")}</span>
+                <li key={i} className="flex gap-4 items-start">
+                  <span className="font-display text-3xl text-[#A6831F]">{(i + 1).toString().padStart(2, "0")}</span>
                   <div className="pt-2">
-                    <div className="text-[#012D76]">{s}</div>
+                    <div className="text-[#012D76] text-sm leading-relaxed">{s}</div>
                   </div>
                 </li>
               ))}
@@ -155,59 +205,68 @@ export default function ForSuppliers() {
         </div>
       </section>
 
-      <section className="py-24 border-t hairline bg-surface">
+      {/* Certifications */}
+      <section id="certifications" className="py-20 lg:py-24 border-t hairline bg-surface">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="overline mb-3">Certification requirements</div>
           <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-6">
-            What EEC screens for, by category.
+            Certification Requirements by Product Category: What EEC Screens For
           </h2>
           <p className="text-[#3A4759] leading-relaxed max-w-3xl mb-8">
-            Required certifications vary by product category. You do not need every certification at application stage — factory audit-readiness is what qualifies you. EEC can guide approved suppliers through the certification roadmap during onboarding.
+            Required certifications vary by product category. You do not need every certification at application stage. Factory audit-readiness is what qualifies you. EEC can guide approved suppliers through the certification roadmap during onboarding.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              ["Food Commodities", "HACCP, FSSC 22000 or ISO 22000, BRC/BRCGS · FSSAI (mandatory), MRL testing reports, Phytosanitary certificate · IEC, GST"],
-              ["Processed & Packaged Foods", "BRC/BRCGS, HACCP, FSSC 22000 · FSSAI, IEC, GST"],
-              ["Fresh & Agricultural Products", "GlobalG.A.P., GRASP, ISO 22000 · Phytosanitary certificate, MRL testing reports · IEC, GST"],
-              ["Healthcare & Hospital Supplies", "ISO 13485, ISO 9001 · product registrations where applicable · IEC, GST"],
-              ["Home Textile, Apparel & Hospitality Products", "BSCI, SEDEX, Oeko-Tex 100, GOTS · IEC, GST"],
-              ["Eco-Friendly, Sustainable & Organic Products", "ISO 9001, GOTS, EU Organic, NPOP, REACH · IEC, GST"],
-            ].map(([cat, certs]) => (
+            {CERT_CARDS.map(({ cat, certs, note }) => (
               <div key={cat} className="border hairline bg-elevated p-5">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-[#C9A23F] font-semibold mb-2">{cat}</div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-[#8F7228] font-semibold mb-2">{cat}</div>
                 <div className="text-sm text-[#3A4759] leading-relaxed">{certs}</div>
+                {note && <p className="mt-3 text-xs text-[#6B7280] leading-relaxed">{note}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 border-t hairline">
+      {/* FAQ */}
+      <section className="py-20 lg:py-24 border-t hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="overline mb-3">FAQ</div>
           <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-8">
-            Frequently asked questions from suppliers
+            Frequently asked questions from suppliers about joining the EEC network
           </h2>
           <div className="border hairline bg-surface overflow-hidden">
-            {FAQ.map(([q, a], idx) => (
+            {FAQ.map(([q, a, link], idx) => (
               <div key={q} className={`${idx !== FAQ.length - 1 ? "border-b hairline" : ""} grid grid-cols-1 md:grid-cols-[36%_1fr]`}>
                 <div className="p-5 md:p-6 font-medium text-[#012D76]">{q}</div>
-                <div className="p-5 md:p-6 text-[#3A4759] leading-relaxed">{a}</div>
+                <div className="p-5 md:p-6 text-[#3A4759] leading-relaxed">
+                  {link ? (
+                    <>{a} <Link to={link} className="text-[#012D76] hover:underline font-medium">Learn more.</Link></>
+                  ) : a}
+                </div>
               </div>
             ))}
+          </div>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border hairline bg-[#FFFFFF] p-6">
+            <p className="text-[#3A4759] text-sm">Ready to apply? Start your factory profile now.</p>
+            <Link to="/register?role=supplier" className="eec-btn-primary" data-testid="faq-cta-suppliers">
+              Apply to the EEC Network <ArrowUpRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
 
+      {/* Footer CTA */}
       <section className="py-20 bg-[#012D76] text-white grain">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <div className="overline mx-auto mb-4">Ready to apply?</div>
-          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">Applications reviewed within 3–5 business days.</h2>
-          <p className="mt-4 text-white/75">No listing fees, ever. Manufacturers with active production facilities only.</p>
+          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">Apply to Join the EEC Verified Supplier Network</h2>
+          <p className="mt-4 text-white/90 font-medium">Applications reviewed within 3 to 5 business days.</p>
+          <p className="mt-2 text-white/60">No listing fees, ever. Manufacturers with active production facilities only.</p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-            <Link to="/register?role=supplier" className="eec-btn-accent">Apply to the EEC Network →</Link>
-            <Link to="/about" className="eec-btn-secondary !text-white !border-white/25 hover:!bg-white/10">About EEC</Link>
+            <Link to="/register?role=supplier" className="eec-btn-accent">Apply to the EEC Network</Link>
+            <Link to="#qualification" className="eec-btn-secondary !text-white !border-white/25 hover:!bg-white/10">See qualification requirements</Link>
           </div>
+          <p className="mt-6 text-white/40 text-xs tracking-wider">{`Singapore HQ (UEN ${COMPANY.uen}) | No supplier listing fees | Active buyer programmes across Europe, US and Middle East`}</p>
         </div>
       </section>
     </div>

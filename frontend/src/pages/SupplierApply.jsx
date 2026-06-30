@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const STEPS = ["Company", "Capacity & Categories", "Documents", "Submit"];
 
-const ALL_CATEGORIES = ["Food Commodities", "Processed & Packaged Foods", "Fresh & Agricultural Products", "Healthcare & Hospital Supplies", "Home Textile, Apparel & Hospitality Products", "Eco-Friendly, Sustainable & Organic Products"];
+const ALL_CATEGORIES = ["Food Commodities", "Processed & Packaged Foods", "Fresh & Agricultural Products", "Healthcare & Hospital Textile Supplies", "Home Textile, Apparel & Hospitality Products", "Eco-Friendly, Sustainable & Organic Products"];
 const DOC_TYPES = [
   { key: "iec", label: "IEC Certificate" },
   { key: "gst", label: "GST Registration" },
@@ -115,7 +115,7 @@ export default function SupplierApply() {
       <div className="flex items-center gap-2 mb-12">
         {STEPS.map((s, i) => (
           <div key={s} className="flex-1 flex items-center gap-2" data-testid={`sapp-step-${i}`}>
-            <div className={`h-8 w-8 flex items-center justify-center border ${i <= step ? "border-[#C9A23F] text-[#C9A23F]" : "border-[#E5EBF2] text-[#6B7280]"} text-xs`}>
+            <div className={`h-8 w-8 flex items-center justify-center border ${i <= step ? "border-[#C9A23F] text-[#8F7228]" : "border-[#E5EBF2] text-[#6B7280]"} text-xs`}>
               {i < step ? <Check size={14} /> : i + 1}
             </div>
             <span className={`text-xs uppercase tracking-widest ${i <= step ? "text-[#012D76]" : "text-[#6B7280]"} hidden sm:block`}>{s}</span>
@@ -182,7 +182,7 @@ export default function SupplierApply() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {DOC_TYPES.map((d) => (
                 <label key={d.key} className="border hairline border-dashed p-6 flex flex-col items-start gap-3 cursor-pointer hover:border-[#C9A23F]/50 transition-colors" data-testid={`sapp-upload-${d.key}`}>
-                  <Upload size={18} className="text-[#C9A23F]" />
+                  <Upload size={18} className="text-[#A6831F]" />
                   <div>
                     <div className="text-[#012D76] font-display">{d.label}</div>
                     <div className="text-xs text-[#6B7280] mt-1">
@@ -199,7 +199,7 @@ export default function SupplierApply() {
                 {form.documents.map((d) => (
                   <div key={d.file_id} className="p-4 flex items-center justify-between border-b hairline last:border-0">
                     <div className="flex items-center gap-3">
-                      <FileText size={16} className="text-[#C9A23F]" />
+                      <FileText size={16} className="text-[#A6831F]" />
                       <div>
                         <div className="text-sm text-[#012D76]">{d.original_filename}</div>
                         <div className="text-xs text-[#6B7280] uppercase tracking-widest">{d.doc_type}</div>

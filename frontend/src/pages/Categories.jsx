@@ -1,97 +1,194 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { api } from "@/lib/api";
 import Seo from "@/components/Seo";
 
 const fallbackCategories = [
   {
     id: "food",
+    anchor: "food-commodities",
     name: "Food Commodities",
     tagline: "Rice, sugar, pulses, edible oils, spices.",
-    image: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/categories/food-commodities.jpg",
+    alt: "Rice, spices, pulses, edible oils and whole spices laid out for food commodity sourcing",
+    cta: "Source food commodities",
+    body: "EEC sources rice, sugar, pulses, edible oils and spices from manufacturers screened for FSSAI registration and BRC/BRCGS certification. HACCP certification is screened as a baseline requirement.",
   },
   {
     id: "processed",
-    name: "Processed & Packaged Foods",
+    anchor: "processed-packaged-foods",
+    name: "Processed and Packaged Foods",
     tagline: "Snacks, beverages, frozen foods, ready meals.",
-    image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/categories/processed-packaged-foods.jpg",
+    alt: "Assorted packaged snacks and confectionery bars for processed and packaged food sourcing",
+    cta: "Source processed foods",
+    body: "EEC sources snacks, beverages, frozen foods and ready meals from manufacturers screened for BRC/BRCGS and/or FSSC 22000 certification. IFS Food certification is required for suppliers serving German and French buyers.",
   },
   {
     id: "fresh",
-    name: "Fresh & Agricultural Products",
-    tagline: "Fruits, vegetables, organic produce, floriculture.",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+    anchor: "fresh-agricultural",
+    name: "Fresh and Agricultural Products",
+    tagline: "Fruits, vegetables, organic produce.",
+    image: "/images/categories/fresh-agricultural-products.jpg",
+    alt: "Crates of fresh fruits, vegetables and organic produce including peppers, tomatoes, carrots and greens",
+    cta: "Source fresh produce",
+    body: "EEC sources fruits, vegetables and organic produce from farms screened for GlobalG.A.P. and GRASP certification. Phytosanitary certificates and MRL testing reports are coordinated where required by the destination market.",
   },
   {
     id: "healthcare",
-    name: "Healthcare & Hospital Supplies",
-    tagline: "Medical devices, pharmaceuticals, hospital consumables.",
-    image: "https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=1200&q=80",
+    anchor: "healthcare-hospital",
+    name: "Healthcare and Hospital Textile Supplies",
+    tagline: "Patient gowns, scrubs, surgical drapes, hospital bed linen, institutional uniforms.",
+    image: "/images/categories/healthcare-hospital-textiles.jpg",
+    alt: "Hospital gowns, scrubs, PPE, bed linen, towels and institutional uniforms in blue and teal",
+    cta: "Source healthcare textiles",
+    body: "EEC sources hospital textiles, PPE, medical linen and non-regulated consumables from manufacturers screened for ISO 9001, OEKO-TEX Standard 100 and BSCI compliance. Medical devices, pharmaceuticals and regulated clinical products are outside EEC scope.",
   },
   {
     id: "home-textile",
-    name: "Home Textile, Apparel & Hospitality Products",
+    anchor: "home-textile-hospitality",
+    name: "Home Textile, Apparel and Hospitality Products",
     tagline: "Bed linen, towels, uniforms, hotel amenities.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/categories/home-textile-apparel-hospitality.jpg",
+    alt: "Bed linen, towels, uniforms and hotel amenities for home textile and hospitality sourcing",
+    cta: "Source home textiles",
+    body: "EEC sources bed linen, towels, uniforms and hotel amenities from manufacturers screened for BSCI and/or SEDEX audit compliance. GOTS and Oeko-Tex STEP certification is available for organic and sustainable textile requirements.",
   },
   {
     id: "eco",
-    name: "Eco-Friendly, Sustainable & Organic Products",
+    anchor: "eco-friendly-sustainable",
+    name: "Eco-Friendly, Sustainable and Organic Products",
     tagline: "Biodegradable packaging, organic textiles, green alternatives.",
-    image: "https://images.unsplash.com/photo-1605600659908-0ef719419d41?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/categories/eco-friendly-sustainable-organic.jpg",
+    alt: "Biodegradable packaging, organic textiles and green alternative products",
+    cta: "Source eco-friendly products",
+    body: "EEC sources biodegradable packaging, organic textiles and green alternatives from manufacturers screened for GOTS certification and EU Organic / NPOP equivalence.",
   },
+];
+
+const FAQ = [
+  { q: "What product categories does EEC source?", a: "EEC operates six active sourcing desks. Food Commodities covers rice, sugar, pulses, edible oils and spices. Processed and Packaged Foods covers snacks, beverages, frozen foods and ready meals. Fresh and Agricultural Products covers fruits, vegetables and organic produce. Healthcare and Hospital Textile Supplies covers patient gowns, scrubs, surgical drapes, hospital bed linen and institutional uniforms. Home Textile, Apparel and Hospitality Products covers bed linen, towels, uniforms and hotel amenities. Eco-Friendly, Sustainable and Organic Products covers biodegradable packaging, organic textiles and green alternatives." },
+  { q: "What certifications does EEC check for food sourcing categories?", a: "Food Commodities suppliers are screened for FSSAI registration and BRC/BRCGS certification, with HACCP certification screened as a baseline requirement. Processed and Packaged Foods suppliers are screened for BRC/BRCGS and/or FSSC 22000 certification, with IFS Food certification required for suppliers serving German and French buyers. Fresh and Agricultural Products suppliers are screened for GlobalG.A.P. and GRASP certification." },
+  { q: "What certifications does EEC check for textile and healthcare categories?", a: "Healthcare and Hospital Textile Supplies manufacturers are screened for ISO 9001, OEKO-TEX Standard 100 and BSCI compliance. Home Textile, Apparel and Hospitality Products manufacturers are screened for BSCI and/or SEDEX audit compliance, with GOTS and Oeko-Tex STEP certification available for organic and sustainable textile requirements." },
+  { q: "Does EEC source organic and eco-friendly products?", a: "Yes. Eco-Friendly, Sustainable and Organic Products is one of the six active sourcing desks, covering biodegradable packaging, organic textiles and green alternatives from manufacturers screened for GOTS certification and EU Organic or NPOP equivalence." },
+  { q: "What countries does EEC source from?", a: "EEC sources from India, Asia and select global markets. India remains the primary sourcing market across food commodities, textiles, fresh produce, processed foods, hospital textiles and eco-friendly products. EEC also works with verified manufacturers in Vietnam, Bangladesh, Indonesia, Thailand and other countries based on category requirements." },
+  { q: "How do I start sourcing a product in one of these categories?", a: "Submit a sourcing brief through the EEC Buyer Portal, or book a free discovery call to discuss your category, target landed cost, compliance requirements and timelines. EEC maps the engagement after the call and recommends the appropriate tier." },
 ];
 
 export default function Categories() {
   const [categories, setCategories] = useState(fallbackCategories);
   useEffect(() => {
-    api
-      .get("/categories")
-      .then(({ data }) => {
-        if (Array.isArray(data) && data.length) setCategories(data);
-      })
-      .catch(() => {
-        setCategories(fallbackCategories);
-      });
+    api.get("/categories").then(({ data }) => {
+      if (Array.isArray(data) && data.length) setCategories(data);
+    }).catch(() => {
+      setCategories(fallbackCategories);
+    });
   }, []);
 
   return (
     <div data-testid="categories-page">
       <Seo
-        title="Categories — Elan Exports"
-        description={`Active sourcing desks across six categories. We run dedicated supplier benches, audit calendars and price benchmarks for each.`}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home" },
-            { "@type": "ListItem", position: 2, name: "Categories" }
-          ]
-        }}
+        title="Product Categories | Global Sourcing Solutions | EEC"
+        description="Explore EEC global sourcing categories and connect with verified manufacturers across food, textiles, healthcare textiles, sustainable products and more. Singapore Headquartered with expertise across India and Asia."
+        canonical="https://eectrade.com/categories"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://eectrade.com" },
+              { "@type": "ListItem", position: 2, name: "Categories", item: "https://eectrade.com/categories" },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "EEC Active Sourcing Categories",
+            description: "Six active sourcing categories managed by Elan Exports Consultancy across India and Asia",
+            numberOfItems: 6,
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Food Commodities",
+                description: "Rice, sugar, pulses, edible oils and spices sourced from manufacturers screened for FSSAI registration and BRC/BRCGS certification.",
+                url: "https://eectrade.com/categories#food-commodities",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Processed and Packaged Foods",
+                description: "Snacks, beverages, frozen foods and ready meals from manufacturers screened for BRC/BRCGS and/or FSSC 22000 certification.",
+                url: "https://eectrade.com/categories#processed-packaged-foods",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Fresh and Agricultural Products",
+                description: "Fruits, vegetables and organic produce from farms screened for GlobalG.A.P. and GRASP certification, with phytosanitary certificates coordinated where required.",
+                url: "https://eectrade.com/categories#fresh-agricultural",
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: "Healthcare and Hospital Textile Supplies",
+                description: "Hospital textiles, PPE, medical linen and non-regulated consumables from manufacturers screened for ISO 9001, OEKO-TEX Standard 100 and BSCI compliance.",
+                url: "https://eectrade.com/categories#healthcare-hospital",
+              },
+              {
+                "@type": "ListItem",
+                position: 5,
+                name: "Home Textile, Apparel and Hospitality Products",
+                description: "Bed linen, towels, uniforms and hotel amenities from manufacturers screened for BSCI and/or SEDEX audit compliance.",
+                url: "https://eectrade.com/categories#home-textile-hospitality",
+              },
+              {
+                "@type": "ListItem",
+                position: 6,
+                name: "Eco-Friendly, Sustainable and Organic Products",
+                description: "Biodegradable packaging, organic textiles and green alternatives from manufacturers screened for GOTS certification and EU Organic / NPOP equivalence.",
+                url: "https://eectrade.com/categories#eco-friendly-sustainable",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ.map(({ q, a }) => ({
+              "@type": "Question",
+              name: q,
+              acceptedAnswer: { "@type": "Answer", text: a },
+            })),
+          },
+        ]}
       />
+
+      {/* Hero */}
       <section className="border-b hairline">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-24">
           <div className="overline mb-4">Categories</div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl">
+          <h1 className="sr-only">India Sourcing Categories. Food, Textiles, Healthcare Textiles and More.</h1>
+          <p className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-light text-[#012D76] max-w-3xl" aria-hidden="true">
             Active sourcing desks across <span className="gold-text">six categories.</span>
-          </h1>
+          </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl">
-            We run dedicated supplier benches, audit calendars and price benchmarks for each. Click a
-            category to see the brief format we use.
+            We maintain dedicated supplier benches for each category. Click a category to see the products EEC sources, the certifications screened and the brief format we use.
           </p>
         </div>
       </section>
 
-      <section className="py-20">
+      {/* Category Cards */}
+      <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((c, i) => (
-            <div key={c.id} className="relative overflow-hidden border hairline bg-surface group" data-testid={`category-item-${c.id}`}>
+            <div id={c.anchor || c.id} key={c.id} className="relative overflow-hidden border hairline bg-surface group" data-testid={`category-item-${c.id}`}>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
                   <img
                     src={c.image}
-                    alt={c.name}
+                    alt={c.alt || c.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
@@ -100,14 +197,45 @@ export default function Categories() {
                     <div className="overline mb-3">{(i + 1).toString().padStart(2, "0")}</div>
                     <div className="font-display text-2xl text-[#012D76] tracking-tight mb-2">{c.name}</div>
                     <p className="text-[#3A4759] text-sm leading-relaxed">{c.tagline}</p>
+                    <p className="text-[#3A4759] text-sm leading-relaxed mt-4">{c.body}</p>
                   </div>
-                  <Link to="/buyer/intake" className="inline-flex items-center gap-2 text-[#C9A23F] hover:text-[#DBB85A] text-sm tracking-wide mt-6 self-start" data-testid={`category-cta-${c.id}`}>
-                    Brief us on {c.name.split(" ")[0]} <ArrowUpRight size={14} />
+                  <Link to="/buyer/intake" className="inline-flex items-center gap-2 text-[#8F7228] hover:text-[#DBB85A] text-sm tracking-wide mt-6 self-start" data-testid={`category-cta-${c.id}`}>
+                    {c.cta || `Source ${c.name.toLowerCase()}`} →
                   </Link>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 lg:py-24 border-t hairline">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="overline mb-3">FAQ</div>
+          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-8">
+            Frequently asked questions about EEC sourcing categories
+          </h2>
+          <div className="border hairline bg-surface overflow-hidden">
+            {FAQ.map(({ q, a }, idx) => (
+              <div key={q} className={`${idx !== FAQ.length - 1 ? "border-b hairline" : ""} grid grid-cols-1 md:grid-cols-[36%_1fr]`}>
+                <div className="p-5 md:p-6 font-medium text-[#012D76]">{q}</div>
+                <div className="p-5 md:p-6 text-[#3A4759] leading-relaxed">{a}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer CTA */}
+      <section className="py-20 bg-[#012D76] text-white grain">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <div className="overline mx-auto mb-4">Get started</div>
+          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">Ready to source from our global supplier network?</h2>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <Link to="/buyer/intake" className="eec-btn-accent">Submit a sourcing brief</Link>
+            <Link to="/buyer/intake" className="eec-btn-secondary !text-white !border-white/25 hover:!bg-white/10">Book a free discovery call</Link>
+          </div>
         </div>
       </section>
     </div>

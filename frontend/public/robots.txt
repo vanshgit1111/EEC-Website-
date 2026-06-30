@@ -2,7 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /buyer
+Allow: /buyer/intake
 Disallow: /supplier
 Disallow: /api/
 
-Sitemap: https://elan-exports-v2.preview.emergentagent.com/sitemap.xml
+Sitemap: https://eectrade.com/sitemap.xml

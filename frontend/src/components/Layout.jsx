@@ -21,12 +21,12 @@ function Logo({ size = "header" }) {
     <Link to="/" className="inline-flex items-center group" data-testid={size === "footer" ? "footer-brand-link" : "brand-link"}>
       <img
         src="/eec-logo.png"
-        alt="Élan Exports Consultancy — Beyond Borders, Beyond Limits"
+        alt="Elan Exports Consultancy -- Singapore Headquartered sourcing consultancy"
         className={`${heightClass} w-auto select-none transition-transform duration-300 group-hover:scale-[1.03]`}
         data-testid={size === "footer" ? "footer-logo" : "brand-logo"}
         draggable="false"
       />
-      <span className="sr-only">Élan Exports Consultancy</span>
+      <span className="sr-only">Elan Exports Consultancy</span>
     </Link>
   );
 }
@@ -142,13 +142,13 @@ export default function Layout({ children }) {
           <div>
             <img
               src="/eec-logo.png"
-              alt="Élan Exports Consultancy"
+              alt="Elan Exports Consultancy logo"
               className="h-24 md:h-32 lg:h-40 w-auto mb-5 select-none"
               data-testid="footer-logo"
               draggable="false"
             />
             <p className="text-sm text-[#3A4759] leading-relaxed max-w-xs">
-              Singapore headquartered sourcing consultancy acting as the embedded procurement arm for global buyers sourcing from India and Asia.
+              Singapore-headquartered sourcing consultancy. Embedded procurement support for global buyers sourcing from India and Asia.
             </p>
           </div>
           <div>
@@ -174,13 +174,15 @@ export default function Layout({ children }) {
               <li><Link to="/login" className="hover:text-[#012D76] transition-colors">Sign in</Link></li>
               <li><Link to="/register" className="hover:text-[#012D76] transition-colors">Register</Link></li>
               <li><a href="mailto:partners@eectrade.com" className="hover:text-[#012D76] transition-colors">partners@eectrade.com</a></li>
-              <li className="text-[#6B7280]">Singapore · India · Asia</li>
+              <li><Link to="/privacy" className="hover:text-[#012D76] transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-[#012D76] transition-colors">Terms of Service</Link></li>
+              <li className="text-[#6B7280]">Singapore HQ · India Operations · Asia Sourcing Network</li>
             </ul>
           </div>
         </div>
         <div className="border-t hairline">
           <div className="max-w-7xl mx-auto px-5 lg:px-10 py-5 flex flex-col md:flex-row justify-between text-xs text-[#6B7280] gap-2">
-            <span>© {new Date().getFullYear()} Élan Exports Consultancy. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Elan Exports Consultancy Pte. Ltd. All rights reserved.</span>
             <span>SINGAPORE HQ · INDIA & ASIA OPERATIONS</span>
           </div>
         </div>

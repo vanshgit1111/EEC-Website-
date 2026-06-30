@@ -21,6 +21,8 @@ import BuyerIntake from "@/pages/BuyerIntake";
 import SupplierPortal from "@/pages/SupplierPortal";
 import SupplierApply from "@/pages/SupplierApply";
 import AdminDashboard from "@/pages/AdminDashboard";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -84,6 +86,8 @@ function AppRouter() {
                 <Route path="/supplier" element={<ProtectedRoute role="supplier"><SupplierPortal /></ProtectedRoute>} />
                 <Route path="/supplier/apply" element={<ProtectedRoute role="supplier"><SupplierApply /></ProtectedRoute>} />
                 <Route path="/admin" element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
               </Routes>
             </Suspense>
           </m.div>

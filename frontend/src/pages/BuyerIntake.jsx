@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const STEPS = ["Company", "Product brief", "Volumes & timeline", "Submit"];
 
-const CATEGORIES = ["Food Commodities", "Processed & Packaged Foods", "Fresh & Agricultural Products", "Healthcare & Hospital Supplies", "Home Textile, Apparel & Hospitality Products", "Eco-Friendly, Sustainable & Organic Products", "Other"];
+const CATEGORIES = ["Food Commodities", "Processed & Packaged Foods", "Fresh & Agricultural Products", "Healthcare & Hospital Textile Supplies", "Home Textile, Apparel & Hospitality Products", "Eco-Friendly, Sustainable & Organic Products", "Other"];
 const TIMELINES = ["Within 30 days", "1-3 months", "3-6 months", "6-12 months", "Exploratory"];
 
 export default function BuyerIntake() {
@@ -72,7 +72,7 @@ export default function BuyerIntake() {
       <div className="flex items-center gap-2 mb-12">
         {STEPS.map((s, i) => (
           <div key={s} className="flex-1 flex items-center gap-2" data-testid={`intake-step-${i}`}>
-            <div className={`h-8 w-8 flex items-center justify-center border ${i <= step ? "border-[#C9A23F] text-[#C9A23F]" : "border-[#E5EBF2] text-[#6B7280]"} text-xs`}>
+            <div className={`h-8 w-8 flex items-center justify-center border ${i <= step ? "border-[#C9A23F] text-[#8F7228]" : "border-[#E5EBF2] text-[#6B7280]"} text-xs`}>
               {i < step ? <Check size={14} /> : i + 1}
             </div>
             <span className={`text-xs uppercase tracking-widest ${i <= step ? "text-[#012D76]" : "text-[#6B7280]"} hidden sm:block`}>{s}</span>
