@@ -33,6 +33,11 @@ const CERT_CARDS = [
   { cat: "Eco-Friendly, Sustainable and Organic Products", certs: "ISO 9001, GOTS, EU Organic, NPOP · IEC, GST", note: null },
 ];
 
+const CERT_WALL = {
+  Textiles: ["BSCI", "SEDEX", "GOTS", "OEKO-TEX Standard 100", "OEKO-TEX STEP", "GRS", "ISO 9001", "ISO 14001", "CE", "WRAP", "Higg Index"],
+  Food: ["FSSAI", "HACCP", "BRC/BRCGS", "FSSC 22000", "IFS Food", "GlobalG.A.P.", "GRASP", "EU Organic", "NPOP", "Kosher", "Halal", "ASC", "MSC"],
+};
+
 const FAQ = [
   ["What is the EEC Supplier Network?", "The EEC Supplier Network is a curated network of verified manufacturers connected with procurement teams through Elan Exports Consultancy. As a Singapore Headquartered global sourcing consultancy, EEC facilitates international sourcing opportunities across multiple categories, with particular expertise in India and Asia."],
   ["Who can apply to join the EEC Supplier Network?", "Manufacturers and producers across the six EEC active categories are welcome to apply. We evaluate suppliers based on manufacturing capability, product quality, export readiness, compliance standards and alignment with buyer requirements. Trading and re-export businesses are not eligible."],
@@ -90,7 +95,7 @@ export default function ForSuppliers() {
             Build a recurring export book with <span className="gold-text font-medium">verified global buyers.</span>
           </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl text-lg">
-            Join the EEC qualified supplier network and connect with international procurement programmes across food commodities, fresh and agricultural products, processed and packaged foods, healthcare and hospital textile supplies, home textiles, apparel and hospitality products, and eco-friendly, sustainable and organic products.
+            Join the EEC <span className="text-[#C9A23F] font-semibold">qualified supplier network</span> and connect with <span className="text-[#C9A23F] font-semibold">international procurement programmes</span> across food commodities, fresh and agricultural products, processed and packaged foods, healthcare and hospital textile supplies, home textiles, apparel and hospitality products, and eco-friendly, sustainable and organic products.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             {isAuthed ? (
@@ -103,6 +108,37 @@ export default function ForSuppliers() {
               </Link>
             )}
             <Link to="#qualification" className="eec-btn-secondary">See qualification requirements</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Sourcing context — dark navy, white/gold */}
+      <section className="bg-[#012D76] py-16 lg:py-20 grain">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
+            <div className="space-y-8">
+              <p className="text-base lg:text-lg leading-relaxed text-white/80">
+                For procurement teams managing multi-category sourcing across India and Asia who need{" "}
+                <span className="text-[#C9A23F] font-semibold">audited supply</span>,{" "}
+                <span className="text-[#C9A23F] font-semibold">strategic sourcing</span>{" "}
+                and <span className="text-[#C9A23F] font-semibold">supply chain visibility</span>.
+              </p>
+              <p className="text-sm leading-relaxed text-white/60">
+                Join the EEC <span className="text-[#C9A23F] font-semibold">qualified supplier network</span> and connect with{" "}
+                <span className="text-[#C9A23F] font-semibold">international procurement programmes</span> across food commodities, fresh and agricultural products, processed and packaged foods, healthcare and hospital textile supplies, home textiles, apparel and hospitality products, and eco-friendly, sustainable and organic products.
+              </p>
+            </div>
+            <div className="space-y-8">
+              <p className="text-base lg:text-lg leading-relaxed text-white/80">
+                We maintain <span className="text-[#C9A23F] font-semibold">dedicated supplier benches</span> for each category. Click a category to see the products EEC sources, the certifications screened and the brief format we use.
+              </p>
+              <p className="text-sm leading-relaxed text-white/60">
+                Whether you are sourcing a new product, expanding your supplier base or building a long-term procurement strategy, EEC provides{" "}
+                <span className="text-[#C9A23F] font-semibold">flexible sourcing solutions</span> tailored to your business. Headquartered in Singapore with a{" "}
+                <span className="text-[#C9A23F] font-semibold">global supplier network</span> and deep expertise across India and Asia, we help businesses identify{" "}
+                <span className="text-[#C9A23F] font-semibold">reliable manufacturing partners</span> and manage sourcing with confidence.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -223,6 +259,25 @@ export default function ForSuppliers() {
                 {note && <p className="mt-3 text-xs text-[#6B7280] leading-relaxed">{note}</p>}
               </div>
             ))}
+          </div>
+
+          <div className="mt-14">
+            <div className="overline mb-3">Standards we screen for</div>
+            <p className="text-[#3A4759] leading-relaxed max-w-3xl mb-8">
+              Certifications are supplier-held and screened during qualification, grouped here by the two broad categories above.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {Object.entries(CERT_WALL).map(([group, certs]) => (
+                <div key={group} className="border hairline bg-elevated p-6">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-[#8F7228] font-semibold mb-4">{group}</div>
+                  <div className="flex flex-wrap gap-2">
+                    {certs.map((c) => (
+                      <span key={c} className="text-xs px-3 py-1.5 border hairline text-[#012D76] bg-[#F5F9FC]">{c}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

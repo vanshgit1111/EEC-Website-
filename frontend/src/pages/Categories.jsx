@@ -172,7 +172,7 @@ export default function Categories() {
             Active sourcing desks across <span className="gold-text">six categories.</span>
           </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl">
-            We maintain dedicated supplier benches for each category. Click a category to see the products EEC sources, the certifications screened and the brief format we use.
+            We maintain <span className="text-[#8F7228] font-semibold">dedicated supplier benches</span> for each category. Click a category to see the products EEC sources, the certifications screened and the brief format we use.
           </p>
         </div>
       </section>

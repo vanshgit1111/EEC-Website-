@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight, Check } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Check, Quote, Star, Handshake, ShieldCheck } from "lucide-react";
 import { api } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import Seo from "@/components/Seo";
@@ -17,6 +17,24 @@ const PROCESS_STEPS = [
 ];
 
 const TRUST = ["BSCI", "SEDEX", "SA8000", "SMETA", "Oeko-Tex 100", "GOTS", "FSSAI", "HACCP", "ISO 22000", "FSSC 22000", "BRC/BRCGS", "IFS Food", "GlobalG.A.P.", "GRASP", "GMP", "ISO 9001", "NPOP", "EU Organic"];
+
+const TESTIMONIALS = [
+  {
+    quote: "We at Kemet Farms, known for our high-quality agricultural products, have found our partnership with Elan Exports to be truly delightful. Your team's professionalism, coupled with a genuinely friendly approach, has turned every collaboration into a thriving success and a joyful experience. This relationship has notably expanded our client network and enriched our market presence. We are deeply thankful for your unwavering support and the opportunities it has brought us. Looking ahead, we're excited about continuing this successful journey and exploring new horizons together. Thank you for making every interaction so rewarding!",
+    attribution: "Vegetable Supplier, Egypt",
+    initials: "KF",
+  },
+  {
+    quote: "I wanted to share some exciting news about our collaboration with Elan Exports. Their supportive team has offered to connect us with big retailers in the industry, which presents a fantastic opportunity for us to expand our reach and grow our business.",
+    attribution: "Textile Supplier, India",
+    initials: "TS",
+  },
+  {
+    quote: "Elan Exports is a fantastic company to work with. The team excels at understanding buyer requirements from day one, clearly communicating these needs to the factories at every stage. They are diligent in ensuring that both the buyer's and factory's needs are met with a well-thought-out plan and seamless execution. Their reliability and friendly approach make them a pleasure to collaborate with.",
+    attribution: "Textile Supplier, India",
+    initials: "TS",
+  },
+];
 
 const HOME_CATEGORIES = [
   { id: "food", name: "Food Commodities", tagline: "Rice, sugar, pulses, edible oils, spices.", image: "/images/categories/food-commodities.jpg", cta: "Source food commodities", alt: "Rice, spices, pulses, edible oils and whole spices laid out for food commodity sourcing" },
@@ -89,6 +107,7 @@ export default function Home() {
             description: "Singapore Headquartered sourcing and procurement consultancy connecting global buyers with verified manufacturers across India and Asia.",
             address: { "@type": "PostalAddress", streetAddress: COMPANY.addressStreet, addressLocality: COMPANY.addressCity, postalCode: COMPANY.addressPostalCode, addressCountry: COMPANY.addressCountry },
             areaServed: ["Europe", "United States", "Middle East", "Asia-Pacific"],
+            sameAs: COMPANY.socialLinks,
           },
           {
             "@context": "https://schema.org",
@@ -130,9 +149,86 @@ export default function Home() {
                 <em className="italic font-normal text-[#012D76]/90">landed cost, and</em><br />
                 supplier uncertainty.
               </p>
-              <p className="mt-8 text-base lg:text-lg text-[#3A4759] leading-relaxed max-w-xl">
-                Singapore Headquartered, EEC is a global sourcing consultancy connecting buyers with verified manufacturers worldwide, with specialised expertise and an extensive sourcing network across India and Asia with open book commercials and predictable shipments. Not another marketplace.
-              </p>
+              <div className="mt-8 text-base lg:text-lg text-[#3A4759] leading-relaxed max-w-xl space-y-5">
+                <p>
+                  EEC is a Singapore headquartered global sourcing consultancy connecting buyers with verified manufacturing partners{" "}
+                  <span className="text-[#C9A23F] font-medium">across the world</span>.
+                </p>
+                <p>
+                  While our sourcing{" "}
+                  <span className="text-[#C9A23F] font-medium">expertise is rooted in India and Asia</span>, our trusted supplier network spans{" "}
+                  <span className="text-[#C9A23F] font-medium">global markets</span>, enabling us to deliver{" "}
+                  <span className="text-[#C9A23F] font-medium">transparent commercial terms, predictable shipments,</span> and{" "}
+                  <span className="text-[#C9A23F] font-medium">reliable sourcing solutions</span>.
+                </p>
+              </div>
+              {/* ── Feature badges ── */}
+              <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center">
+
+                {/* 1 — Transparent Commercial Terms */}
+                <div className="flex items-center gap-4 sm:pr-8">
+                  <div className="relative w-[60px] h-[60px] flex-shrink-0">
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                      <circle cx="30" cy="30" r="28.5" stroke="#0D1B2A" strokeWidth="1.6"/>
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Handshake size={27} color="#0D1B2A" strokeWidth={1.5} aria-hidden="true"/>
+                    </div>
+                  </div>
+                  <span className="text-sm font-bold text-[#0D1B2A] leading-snug">
+                    Transparent<br/>Commercial Terms
+                  </span>
+                </div>
+
+                {/* divider: vertical on desktop, horizontal on mobile */}
+                <div className="hidden sm:block w-px h-14 bg-[#0D1B2A]/20 flex-shrink-0" aria-hidden="true"/>
+                <div className="sm:hidden h-px w-52 bg-[#0D1B2A]/20 my-4" aria-hidden="true"/>
+
+                {/* 2 — Predictable Shipments — custom cargo ship SVG */}
+                <div className="flex items-center gap-4 sm:px-8">
+                  <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[60px] h-[60px] flex-shrink-0" aria-hidden="true">
+                    <circle cx="30" cy="30" r="28.5" stroke="#0D1B2A" strokeWidth="1.6"/>
+                    {/* Hull */}
+                    <path d="M11 38 L13 43 L47 43 L49 38" stroke="#0D1B2A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    {/* Deck line */}
+                    <line x1="11" y1="38" x2="49" y2="38" stroke="#0D1B2A" strokeWidth="1.4" strokeLinecap="round"/>
+                    {/* Container left */}
+                    <rect x="12" y="29" width="10" height="9" rx="0.8" stroke="#0D1B2A" strokeWidth="1.4"/>
+                    {/* Container middle */}
+                    <rect x="24" y="29" width="10" height="9" rx="0.8" stroke="#0D1B2A" strokeWidth="1.4"/>
+                    {/* Bridge / superstructure right */}
+                    <rect x="36" y="27" width="11" height="11" rx="0.8" stroke="#0D1B2A" strokeWidth="1.4"/>
+                    {/* Smokestack */}
+                    <rect x="38.5" y="22.5" width="3" height="4.5" rx="0.5" stroke="#0D1B2A" strokeWidth="1.3"/>
+                    {/* Water wave */}
+                    <path d="M9 46 Q13 44.5 17 46 Q21 47.5 25 46 Q29 44.5 33 46 Q37 47.5 41 46 Q45 44.5 50 46" stroke="#0D1B2A" strokeWidth="1.3" strokeLinecap="round"/>
+                  </svg>
+                  <span className="text-sm font-bold text-[#0D1B2A] leading-snug">
+                    Predictable<br/>Shipments
+                  </span>
+                </div>
+
+                {/* divider */}
+                <div className="hidden sm:block w-px h-14 bg-[#0D1B2A]/20 flex-shrink-0" aria-hidden="true"/>
+                <div className="sm:hidden h-px w-52 bg-[#0D1B2A]/20 my-4" aria-hidden="true"/>
+
+                {/* 3 — Reliable Sourcing Solutions */}
+                <div className="flex items-center gap-4 sm:pl-8">
+                  <div className="relative w-[60px] h-[60px] flex-shrink-0">
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                      <circle cx="30" cy="30" r="28.5" stroke="#0D1B2A" strokeWidth="1.6"/>
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <ShieldCheck size={27} color="#0D1B2A" strokeWidth={1.5} aria-hidden="true"/>
+                    </div>
+                  </div>
+                  <span className="text-sm font-bold text-[#0D1B2A] leading-snug">
+                    Reliable<br/>Sourcing Solutions
+                  </span>
+                </div>
+
+              </div>
+
               <div className="mt-10 flex flex-col sm:flex-row gap-3">
                 {isAuthed ? (
                   <>
@@ -360,6 +456,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section data-testid="testimonials-section" aria-label="Supplier testimonials">
+        <TestimonialsBlock />
+      </section>
+
       {/* DUAL FINAL CTA */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
@@ -417,6 +518,55 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function TestimonialWallCard({ t }) {
+  return (
+    <div className="shrink-0 w-[360px] sm:w-[400px] bg-[#F6F6FA] rounded-2xl p-5 lg:p-6 flex flex-col gap-3">
+      <Quote size={32} className="text-[#C9A23F]" aria-hidden="true" />
+      <p className="text-sm text-[#3A4759] leading-relaxed flex-1">
+        {t.quote}
+      </p>
+      <div className="flex items-center gap-3 pt-1">
+        <div className="w-9 h-9 rounded-full bg-[#012D76] flex items-center justify-center shrink-0">
+          <span className="text-[#C9A23F] font-display text-xs font-semibold">{t.initials}</span>
+        </div>
+        <p className="text-sm font-semibold text-[#012D76]">{t.attribution}</p>
+      </div>
+    </div>
+  );
+}
+
+function TestimonialsBlock() {
+  const cards = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+
+  const edgeMask = {
+    maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+    WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+  };
+
+  return (
+    <div className="bg-[#012D76] py-6 lg:py-8">
+      <div className="mx-auto max-w-7xl px-2 lg:px-3">
+        <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] px-5 lg:px-8 py-8 lg:py-10 shadow-[0_32px_80px_-20px_rgba(1,45,118,0.2)]">
+          <div className="text-center mb-6 lg:mb-8">
+            <span className="inline-flex items-center gap-2 bg-[#012D76] rounded-full px-4 py-2 mb-6">
+              <Star size={13} className="text-[#C9A23F]" fill="currentColor" aria-hidden="true" />
+              <span className="text-white text-xs font-medium tracking-wide">Trusted by suppliers and buyers worldwide</span>
+            </span>
+            <h2 className="font-display text-3xl lg:text-4xl text-[#012D76] tracking-tight">
+              Words of praise from our <em className="italic font-normal text-[#A6831F]">global network.</em>
+            </h2>
+          </div>
+          <div className="eec-tmarquee-row overflow-hidden" style={edgeMask}>
+            <div className="animate-testimonials-ltr flex gap-5 items-stretch" style={{ width: "max-content" }}>
+              {cards.map((t, i) => <TestimonialWallCard key={i} t={t} />)}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

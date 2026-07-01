@@ -250,6 +250,14 @@ input::placeholder, textarea::placeholder {
   to { transform: translateX(-50%); }
 }
 .animate-marquee { animation: eec-marquee 30s linear infinite; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.animate-testimonials-rtl { animation: eec-marquee 60s linear infinite; }
+.animate-testimonials-ltr { animation: eec-marquee 60s linear infinite reverse; }
+.eec-tmarquee-row:hover .animate-testimonials-rtl,
+.eec-tmarquee-row:hover .animate-testimonials-ltr {
+  animation-play-state: paused;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {

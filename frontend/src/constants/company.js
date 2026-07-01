@@ -21,4 +21,9 @@ export const COMPANY = {
   addressFull: "36 Jalan Sampurna, Singapore 268304",
   supplierCountClaim: "70+ verified suppliers",
   contactEmail: "partners@eectrade.com",
+  socialLinks: [
+    "https://www.linkedin.com/company/elan-exports/",
+    "https://www.instagram.com/elan_exports_consultancy/",
+    "https://www.facebook.com/profile.php?id=61591311811743",
+  ],
 };

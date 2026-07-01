@@ -31,7 +31,7 @@ JWT_SECRET = os.environ["JWT_SECRET"]
 JWT_ALGORITHM = "HS256"
 EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
 APP_NAME = os.environ.get("APP_NAME", "elan-exports-v2")
-ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@elanexports.com")
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@eectrade.com")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 EMERGENT_AUTH_SESSION_URL = "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data"
 
@@ -47,7 +47,7 @@ SMTP_HOST = os.environ.get("SMTP_HOST")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USERNAME = os.environ.get("SMTP_USERNAME")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD")
-SMTP_FROM = os.environ.get("SMTP_FROM", SMTP_USERNAME or "no-reply@elanexports.com")
+SMTP_FROM = os.environ.get("SMTP_FROM", SMTP_USERNAME or "no-reply@eectrade.com")
 
 SOURCING_CATEGORIES = [
     "Food Commodities",
@@ -584,18 +584,35 @@ class BuyerIntakeCreate(BaseModel):
 
 class SupplierApplicationCreate(BaseModel):
     company_name: str
+    headquarters_address: Optional[str] = None
+    year_established: Optional[str] = None
     contact_name: str
+    contact_position: Optional[str] = None
     contact_email: EmailStr
     contact_phone: str
+    additional_contact_name: Optional[str] = None
+    additional_contact_position: Optional[str] = None
+    additional_contact_email: Optional[str] = None
+    additional_contact_phone: Optional[str] = None
     country: str
     state: Optional[str] = None
     iec_number: Optional[str] = None
     gst_number: Optional[str] = None
+    company_overview: Optional[str] = None
+    annual_revenue: Optional[str] = None
+    key_markets: Optional[str] = None
+    notable_clients: Optional[str] = None
+    case_studies: Optional[str] = None
+    languages_spoken: Optional[str] = None
+    preferred_communication: Optional[str] = None
+    special_capabilities: Optional[str] = None
     product_categories: List[str] = Field(default_factory=list, min_length=1)
+    product_description: Optional[str] = None
     annual_capacity: str
     export_experience: str
     certifications: List[str] = Field(default_factory=list)
     factory_size: Optional[str] = None
+    factory_locations: Optional[str] = None
     employee_count: Optional[str] = None
     website: Optional[str] = None
     documents: List[dict] = Field(default_factory=list)  # [{path, original_filename, doc_type}]

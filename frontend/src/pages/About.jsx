@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import Seo from "@/components/Seo";
 import { COMPANY } from "@/constants/company";
+import TeamSection from "@/components/TeamSection";
 
 // TODO: Replace empty office corridor with sourcing/logistics/factory imagery for About page hero
 const BG = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80";
@@ -49,6 +50,7 @@ const ABOUT_FAQ = [
   },
 ];
 
+
 export default function About() {
   const { user } = useAuth();
   const isAuthed = user && user.user_id;
@@ -93,6 +95,7 @@ export default function About() {
             },
             areaServed: ["Europe", "United States", "Middle East", "Asia-Pacific"],
             knowsAbout: ["Sourcing", "Procurement", "Supplier qualification", "Factory audits", "Landed cost modelling", "India manufacturing", "Asia supply chain"],
+            sameAs: COMPANY.socialLinks,
           },
           {
             "@context": "https://schema.org",
@@ -161,28 +164,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="overline mb-3">Leadership</div>
-          <h2 className="font-display text-3xl sm:text-4xl text-[#012D76] tracking-tight font-light mb-10">
-            Founded by procurement practitioners.
-          </h2>
-          <div className="border hairline p-8 bg-surface max-w-2xl flex gap-8 items-start">
-            {/* TODO: Replace placeholder with Shirali Shetty headshot when approved */}
-            <div className="w-16 h-16 rounded-full bg-[#012D76] flex items-center justify-center shrink-0">
-              <span className="text-white font-display text-xl">SS</span>
-            </div>
-            <div>
-              <div className="font-display text-xl text-[#012D76] mb-1">Shirali Shetty</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-[#8F7228] mb-4">Founder, Elan Exports Consultancy</div>
-              <p className="text-sm text-[#3A4759] leading-relaxed">
-                Shirali brings extensive procurement and sourcing experience across India and Asia. EEC was founded on the conviction that international buyers deserve the same supply chain rigour that large enterprises build in-house, accessible as a service, without the overhead.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TeamSection />
 
       {/* Principles */}
       <section className="py-20 lg:py-24 border-t hairline bg-surface">

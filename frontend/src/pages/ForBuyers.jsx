@@ -81,7 +81,7 @@ export default function ForBuyers() {
             Outsource sourcing. <span className="gold-text font-medium italic">Not accountability.</span>
           </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl text-lg">
-            For procurement teams managing multi-category sourcing across India and Asia who need audited supply, strategic sourcing and supply chain visibility.
+            For procurement teams managing multi-category sourcing across India and Asia who need <span className="text-[#8F7228] font-semibold">audited supply</span>, <span className="text-[#8F7228] font-semibold">strategic sourcing</span> and <span className="text-[#8F7228] font-semibold">supply chain visibility</span>.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             {isAuthed ? (
@@ -102,7 +102,7 @@ export default function ForBuyers() {
       <section className="py-16 border-b hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-[#3A4759] text-lg leading-relaxed max-w-4xl">
-            EEC is a Singapore Headquartered global sourcing consultancy connecting procurement teams with verified manufacturers worldwide. Our expertise in supplier qualification, strategic sourcing and procurement, with specialised focus across India and Asia, helps businesses build transparent, long-term supply chain partnerships.
+            EEC is a <span className="text-[#8F7228] font-semibold">Singapore Headquartered</span> global sourcing consultancy connecting procurement teams with <span className="text-[#8F7228] font-semibold">verified manufacturers worldwide</span>. Our expertise in supplier qualification, strategic sourcing and procurement, with specialised focus across India and Asia, helps businesses build transparent, <span className="text-[#8F7228] font-semibold">long-term supply chain partnerships</span>.
           </p>
         </div>
       </section>

@@ -115,7 +115,7 @@ export default function Services() {
             Sourcing services, <span className="gold-text">unbundled.</span>
           </p>
           <p className="mt-6 text-[#3A4759] max-w-2xl leading-relaxed">
-            Whether you are sourcing a new product, expanding your supplier base or building a long-term procurement strategy, EEC provides flexible sourcing solutions tailored to your business. Headquartered in Singapore with a global supplier network and deep expertise across India and Asia, we help businesses identify reliable manufacturing partners and manage sourcing with confidence.
+            Whether you are sourcing a new product, expanding your supplier base or building a long-term procurement strategy, EEC provides <span className="text-[#8F7228] font-semibold">flexible sourcing solutions</span> tailored to your business. Headquartered in Singapore with a <span className="text-[#8F7228] font-semibold">global supplier network</span> and deep expertise across India and Asia, we help businesses identify <span className="text-[#8F7228] font-semibold">reliable manufacturing partners</span> and manage sourcing with confidence.
           </p>
         </div>
       </section>
@@ -177,7 +177,7 @@ export default function Services() {
               </div>
             ))}
           </div>
-          <p className="mt-12 text-sm text-[#3A4759] leading-relaxed max-w-3xl" data-testid="services-pricing-disclaimer">
+          <p className="mt-12 text-center text-xs uppercase tracking-[0.32em] text-[#6B7280]" data-testid="services-pricing-disclaimer">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A23F] align-middle mr-3"></span>
             Pricing is tailored to the scope and requirements of each sourcing project. Please contact our team to discuss your sourcing objectives. EEC does not charge suppliers listing or activation fees at any stage.
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A23F] align-middle ml-3"></span>
